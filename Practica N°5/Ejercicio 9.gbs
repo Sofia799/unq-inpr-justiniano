@@ -1,0 +1,97 @@
+// 9A
+function colorAliado() {
+    /*
+        PROPOSITO: describe el color del soldado aliado.
+        PRECONDICION: ninguna
+        TIPO: Color
+    */
+    return (Negro)
+}
+
+function colorEnemigo() {
+    /*
+        PROPOSITO: describe el color del soldado enemigo.
+        PRECONDICION:ninguna
+        TIPO: Color
+    */
+    return (Rojo)
+}
+
+// 9B
+function cantidadDeSoldadosDel_(colorDelEjercito) {
+    /*
+        PROPOSITO: describe la cantidad de soldados de "colorDelEjercito".
+        PRECONDICION: ninguna
+        PARAMETROS: "colorDelEjercito" es un Color que representa el color del ejercito del cual saber
+        la cantidad de soldados
+        TIPO: Número
+    */
+    return (nroBolitas(colorDelEjercito))
+}
+
+// 9C
+function esCeldaIndefensa() {
+    /*
+        PROPOSITO: indica si la celda actual se encuentra indefensa.
+        PRECONDICION: ninguna
+        TIPO: Booleano
+    */
+    return (cantidadDeSoldadosDel_(colorAliado()) == 0)
+}
+
+// 9D
+function estadoDeEmergencia() {
+    /*
+        PROPOSITO: indica si la celda actual está en estado de emergencia.
+        PRECONDICION: ninguna
+        TIPO: Booleano
+    */
+    return ( esCeldaIndefensa() && 
+             cantidadDeSoldadosDel_(colorEnemigo()) > 100
+            )
+}
+
+// 9E
+function haySuficientesAliadosARazónDe_PorCada_(cantidadDefensa, cantidadAtaque) {
+    /*
+        PROPOSITO: indica si hay suficientes aliados determinado por "cantidadDeDefensa" por cada
+        enemigo determinado por "cantidadAtaque"
+        PRECONDICION: ninguna
+        PARAMETROS: ambos parámetros son tipo Número. "cantidadDefensa" representa la cantidad de aliados y 
+        "cantidadAtaque" representa la cantidad de enemigos.
+        TIPO: Booleano
+    */
+    return ( cantidadAliadosTotalesNecesariosARazónDe_PorCada_(cantidadDefensa, cantidadAtaque)
+                <= 
+             cantidadDeSoldadosDel_(colorAliado())
+            )
+}
+
+function cantidadAliadosTotalesNecesariosARazónDe_PorCada_(cantidadDefensa, cantidadAtaque) {
+    /*
+        PROPOSITO: describe la cantiad suficientes aliados determinado por "cantidadDeDefensa" por cada
+        enemigo determinado por "cantidadAtaque"
+        PRECONDICION: ninguna
+        PARAMETROS: ambos parámetros son tipo Número. "cantidadDefensa" representa la cantidad de aliados y 
+        "cantidadAtaque" representa la cantidad de enemigos.
+        TIPO: Booleano
+    */
+    return ( ((cantidadDeSoldadosDel_(colorEnemigo()) * cantidadDefensa)
+                div cantidadAtaque
+             )
+            )
+}
+
+// 9F
+function aliadosNecesariosParaDefensaEficaz() {
+    /*
+        PROPOSITO: describe la cantidad de soldados aliados que faltan para defender la celda actual.
+        PRECONDICION: no hay suficientes aliados.
+        TIPO: Número
+    */
+    return (cantidadAliadosTotalesNecesariosARazónDe_PorCada_(3,2)
+            -
+            cantidadDeSoldadosDel_(colorAliado()
+            )
+    )
+}

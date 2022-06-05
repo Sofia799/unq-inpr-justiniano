@@ -1,0 +1,44 @@
+procedure EnviarAliadosParaDuplicarEnemigos() {
+    /*
+        PROPOSITO: Agregar soldados aliados en cantidad suficiente duplicando la cantidad de soldados enemigos
+         en la celda actual.
+        PRECONDICION: ninguna
+        OBSERVACION: los aliados se representan con bolitas de color negro y los enemigos con bolitas de color rojo
+    */
+    PonerElDobleDe_QueDe_(Negro,Rojo)
+}
+
+procedure PonerElDobleDe_QueDe_(colorAPoner, colorAImitar) {
+    /* 
+        PROPÓSITO: Poner bolitas de color **colorAPoner** en una cantidad que sea el doble de las que hay de color 
+        **colorAImitar** en la celda actual
+        PRECONDICIONES: ninguna
+        PARÁMETROS:
+                    * colorAPoner: Color. El color de las bolitas a poner
+                    * colorAImitar: Color. El color de las bolitas cuya cantidad se va a imitar en la celda actual
+    */
+    repeat(nroBolitas(colorAImitar) * 2) {
+        Poner(colorAPoner)
+    }
+}
+
+procedure PelearLaBatalla(){
+    /*
+        PROPOSITO: pelear una batalla en la celda actual.
+        PRECONDICION: *hay suficientes soldados aliados y soldados enemigos en la celda actual para realizar la batalla.
+    */
+    // (enemigos / 2) * 3 
+    SacarAliadosYEnemigos()
+}
+
+procedure SacarAliadosYEnemigos() {
+    /*
+        PROPOSITO: sacar a los aliados y enemigos en la celda actual.
+        PRECONDICION: ninguna
+        OBSERVACION: los aliados se representan con bolitas negras y los enemigos con bolitas rojas
+    */
+    repeat ((nroBolitas(Rojo) div 2) * 3) {
+        Sacar(Negro)
+    }
+    SacarTodas_(Rojo)
+}

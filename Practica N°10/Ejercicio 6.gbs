@@ -1,0 +1,16 @@
+function aparicionesDelColor_EnElCamino_(color, direcciones) {
+    /*
+        PROPOSITO: describe una lista de la cantidad de bolitas del color "color" en las celdas
+        recorridas en las direcciones dadas en "direcciones"
+        PRECONDICION: hay al menos una celda en cada direccion en "direcciones"
+        PARAMETROS: "color" es un Color
+                    "direcciones" es una Lista de tipo Direccion
+        TIPO: Lista de Número
+    */
+    cantidadDeBolitas := []
+    foreach direccion in direcciones {
+        cantidadDeBolitas := cantidadDeBolitas ++ [nroBolitas(color)]
+        Mover(direccion)
+    }
+    return (cantidadDeBolitas ++ [nroBolitas(color)])
+}

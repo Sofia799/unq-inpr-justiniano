@@ -1,0 +1,13 @@
+procedure PasarPalabraActualAMayúsculas() {
+    /*
+        PROPOSITO: pasar la palabra actual en minúsculas a mayúsculas en la fila al Norte.
+        PRECONDICION: *hay al menos una fila al Norte de la fila actual.
+                      *en la fila actual hay una palabra en minúsculas escrita.
+    
+    */
+    repeat (nroBolitas(Rojo)) {
+        Mover(Este)
+        PasarLetraAMayuscula()
+    }
+    
+}

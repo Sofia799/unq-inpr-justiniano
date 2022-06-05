@@ -1,0 +1,117 @@
+function hayEnemigoEnLaVisionDeLinkHacia_(direccion){
+    /*
+        PROPOSITO:indica si hay enemigo y no hay ningun obstaculo en la posicion lindante de la actual hacia la 
+        direccion "direccion" en la vision de Link.
+        ṔRECONDICION: *el cabezal esta sobre Link
+        PARAMETROS: "direccion" es una Direccion que representa la direccion de la posicion a mover
+        TIPO: Booleano
+        OBSERVACION: recorrido de búsqueda sobre celdas de una fila buscando si hay un enemigo o un obstaculo en la
+        fila actual
+    */
+    while (not hayEnemigoDeLink() && not hayObstaculo() && esFinalDeCamino_(direccion)) {
+        MoverLinkHacia_(direccion)
+    }
+    return (hayEnemigoDeLink())
+}
+
+function esFinalDeCamino_(direccion) {
+    /*--*/
+    return (puedeMover(direccion))
+}
+
+function distanciaEntreLinkYSuEnemigo() {
+    /*
+        PROPOSITO: describe la distancia entre Link y su enemigo en la fila actual hacia la direccion donde se
+        encuentra el enemigo.
+        PRECONDICION: *hay un enemigo en la fila actual
+                      *el cabezal esta sobre Link
+                      *no hay obstáculos en la fila actual
+        tipo:NUMERO
+        OBSERVACION: recorrido de acumulacion sobre celdas de una fila contando las celdas de distancia existentes 
+        entre Link y su enemigo
+    */
+    distanciaRecorrida := 0
+    while(not hayEnemigoDeLink()) {
+        distanciaRecorrida := distanciaRecorrida + 1
+        MoverLinkHacia_(direccionDondeEstaElEnemigo())
+    }
+    return (distanciaRecorrida)
+}
+
+//al invocarlo pasa como argumento a direccionDondeEstaElEnemigo2()
+function distanciaEntreLinkYSuEnemigo_(direccion) {
+    /*
+        PROPOSITO: describe la distancia entre Link y su enemigo en la fila actual hacia la direccion donde se
+        encuentra el enemigo.
+        PRECONDICION: *hay un enemigo en la fila actual
+                      *el cabezal esta sobre Link
+                      *no hay obstáculos en la fila actual
+        tipo:NUMERO
+        OBSERVACION: recorrido de acumulacion sobre celdas de una fila contando las celdas de distancia existentes 
+        entre Link y su enemigo
+    */
+    distanciaRecorrida := 0
+    while(not hayEnemigoDeLink()) {
+        distanciaRecorrida := distanciaRecorrida + 1
+        MoverLinkHacia_(direccion)
+    }
+    return (distanciaRecorrida)
+}
+
+function direccionDondeEstaElEnemigo2() {
+    /*
+        PROPOSITO: describe la primer direccion a donde se encuentra el enemigo.
+        PRECONDICION: hay un enemigo en alguna celda en alguna de las direcciones
+        TIPO:Direccion
+        OBSERVACION: recorrido de busqueda de direcciones en la celda actual buscando la direccion
+        en la que se encuentra el enemigo
+    */
+    direccionActual := minDir()
+    while (not hayEnemigoEnLaVisionDeLinkHacia_(direccionActual)) {
+        direccionActual := siguiente(direccionActual)
+    }
+    return (direccionActual)
+}
+
+function direccionDondeEstaElEnemigo() {
+    /*
+        PROPOSITO: describe la direccion a donde se encuentra el enemigo.
+        PRECONDICION: ninguna
+        TIPO:Direccion
+    */
+    return (choose Este when (hayEnemigoEnLaVisionDeLinkHacia_(Este))
+                   Sur when (hayEnemigoEnLaVisionDeLinkHacia_(Sur))
+                   Oeste when (hayEnemigoEnLaVisionDeLinkHacia_(Oeste))
+                   Norte otherwise)
+}
+
+procedure EliminarEnemigoVisible() {
+    /*
+        PROPOSITO: matar a un enemigo visible (por Link) en la fila actual hacia el Este
+        PRECONDICION: *la fila actual no tiene obstáculos
+                      *hay un enemigo visible en la fila actual
+                      *el cabezal esta sobre Link
+        OBSERVACION:
+    */
+    if (distanciaEntreLinkYSuEnemigo() > 3) {
+        MatarEnemigoHacia_ConElArco(direccionDondeEstaElEnemigo())
+    } else {
+        AcercarseAEnemigoHacia(direccionDondeEstaElEnemigo())
+        MatarEnemigoHacia_ConLaEspada(direccionDondeEstaElEnemigo())
+    }
+}
+
+procedure AcercarseAEnemigoHacia(direccion) {
+    /*
+        PROPOSITO: llevar a link hacia el enemigo para matarlo hacia la direccion "direccion" de la fila actual
+        PRECONDICION: *hay un enemigo en la celda de la fila hacia la direccion "direccion"
+                      *El cabezal esta sobre Link
+                      *no hay obstaculos en la fila actual
+        PARAMETROS: "direccion" es una Direccion que representa la direccion hacia donde acercar a Link al enemigo
+        OBSERVACION: recorrido de búsqueda sobre celdas de una fila moviendo a link hasta que la distancia entre
+        él y su enemigo sea 0
+    */
+    while(puedeMover(direccion) && distanciaEntreLinkYSuEnemigo() == 0) {
+        MoverLinkHacia_(direccion)
+    }
+}

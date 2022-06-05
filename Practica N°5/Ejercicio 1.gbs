@@ -1,0 +1,40 @@
+/*
+    a. not hayBolitas(Rojo)
+        *tablero A = tipo Booleano, valor true
+        *tablero B = tipo Booleano, valor true
+        *tablero C = tipo Booleano, valor false
+
+    b. puedeMover(Sur) && puedeMover(Oeste)
+        *tablero A = tipo Booleano, valor false
+        *tablero B = tipo Booleano, valor false
+        *tablero C = tipo Booleano, valor true
+
+    c. puedeMover(Sur) || puedeMover(Oeste)
+        *tablero A = tipo Booleano, valor false
+        *tablero B = tipo Booleano, valor true
+        *tablero C = tipo Booleano, valor true
+
+    d. not puedeMover(Sur) && puedeMover(Oeste)
+        *tablero A = tipo Booleano, valor false
+        *tablero B = tipo Booleano, valor true
+        *tablero C = tipo Booleano, valor false
+
+    e. nroBolitas(Negro) == nroBolitas(Azul) 
+        && 
+       nroBolitas(Negro) == nroBolitas(Verde)
+        *tablero A = tipo Booleano, valor false
+        *tablero B = tipo Booleano, valor true
+        *tablero C = tipo Booleano, valor true
+
+    f. puedeMover(opuesto(opuesto(dirección))) suponiendo que, por alguna razón, 
+       esta expresión aparece dentro del cuerpo del procedimiento Mover_SegúnColor_, 
+       y que se lo invocó como Mover_SegúnColor_(Oeste, Azul)
+        *tablero A = tipo Booleano, valor false
+        *tablero B = tipo Booleano, valor true
+        *tablero C = tipo Booleano, valor true
+
+    g. ¿En qué situaciones al invocar Mover_SegúnColor_ la siguiente expresión
+       sería verdadera, en caso de aparecer dentro del cuerpo del procedimiento?
+       not puedeMover(dirección) && not puedeMover(opuesto(dirección))
+        * en los 3 tableros daría falso 
+*/

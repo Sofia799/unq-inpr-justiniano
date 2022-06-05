@@ -1,0 +1,33 @@
+// 11a
+function direccionesOpuestasDe_(direcciones) {
+    /*
+        PROPOSITO: describe una lista de direcciones donde cada direccion de "direcciones" es su opuesto.
+        PRECONDICION: ninguna
+        PARAMETROS: "direcciones" es una Lista de tipo Direccion
+        TIPO: Lista de tipo Direccion
+        OBSERVACION: Recorrido de transformacion sobre la lista "direcciones" transformando cada elemento
+                    en su opuesto.
+    */
+    direccionesOpuestas := []
+    foreach direccion in direcciones {
+        direccionesOpuestas := direccionesOpuestas ++ [opuesto(direccion)]
+    }
+    return (direccionesOpuestas)
+}
+
+// 11b
+function siguientesDe_(colores) {
+    /*
+        PROPOSITO: describe una lista de colores donde cada elemento de "colores" es su siguiente.
+        PRECONDICION: ninguna
+        PARAMETROS: "colores" es una Lista de tipo Color
+        TIPO: Lista de tipo Color
+        OBSERVACION: Recorrido de transformacion sobre la lista "colores" transformando cada elemento
+                    en su siguiente color.
+    */
+    coloresSiguientes := []
+    foreach color in colores {
+        coloresSiguientes := coloresSiguientes ++ [siguiente(color)]
+    }
+    return (coloresSiguientes)
+}

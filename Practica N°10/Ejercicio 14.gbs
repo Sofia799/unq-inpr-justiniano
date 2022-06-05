@@ -1,0 +1,16 @@
+function contiene_A_(lista, elemento) {
+    /*
+        PROPOSITO: indica si la lista "lista" tiene contenido al elemento "elemento"
+        PRECONDICION: ninguna
+        PARAMETROS:"lista" es una Lista de tipo Elemento
+                   "elemento" es un Elemento
+        TIPO: BOoleano
+        OBSERVACION: Recorrido de busqueda sobre la lista dada buscando si el elemento dado esta
+                     incluido
+    */
+    listaRestante := lista
+    while (not esVacía(listaRestante) && not primero(listaRestante == elemento)) {
+        listaRestante := resto(listaRestante)
+    }
+    return (not esVacía(listaRestante))
+}

@@ -1,0 +1,141 @@
+// 3A
+procedure SacarUnaFicha_SiSePuede(colorDeLaFicha) {
+    /*
+        PROPOSITO: sacar una ficha del color "colorDeLaFicha" si se puede en la celda actual.
+        PRECONDICION: ninguna
+        PARAMETROS: "colorDeLaFicha" es un Color que representa el color de la ficha a sacar.
+    */
+    if (hayFichaColor_(colorDeLaFicha)) {
+        SacarFicha_(colorDeLaFicha)
+    }
+}
+
+procedure SacarFicha_(colorFicha) {
+    /*
+        PROPOSITO: sacar una ficha del color "colorFicha" en la celda actual.
+        PRECONDICION: hay al menos una ficha del color "colorFicha" en la celda actual
+        PARAMETROS: "colorFicha" es un Color que representa la ficha a sacar
+    */
+    Sacar(colorFicha)
+}
+
+function hayFichaColor_(color) {
+    /*
+        PROPOSITO: indica si hay una ficha del color "color" en la celda actual.
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color que representa el color de la ficha
+        RESULTADO: Booleano
+    */
+    return (hayBolitas(color))
+}
+
+//3B
+procedure DesempatarParaElLocal__(colorDelLocal,colorDelVisitante) {
+    /*
+        PROPOSITO: Desempatar para el jugador local "colorDelLocal" entre los jugadores "colorDelLocal" 
+                    Y "colorDelVisitante" en la celda actual.
+        PRECONDICION: *en la celda actual hay un empate entre los jugadores "colorDelLocal" y "colorDelVisitante"
+                      *la celda actual no está vacía.
+        PARAMETROS: *"colorDelLocal" es un Color que representa a un jugador de local.
+                    *"colorDelVisitante" es un Color que representa a un jugador de visitante.
+    */
+    if (hayEmpate(colorDelLocal, colorDelVisitante)) {
+        Desempatar_(colorDelLocal)
+    }
+}
+
+function hayEmpate(colorDelLocal, colorDelVisitante) {
+    /*
+        PROPOSITO: indica si hay empate entre los jugadores "colorDelLocal" y "colorDelVisitante" en la celda actual.
+        PRECONDICION: ninguna
+        PARAMETROS: *"colorDelLocal" es un Color que representa el jugador del local
+                    *"colorDelVisitante" es un Color que representa el jugador de visitante
+        RESULTADO: Booleano
+    */
+    return (nroBolitas(colorDelLocal) == nroBolitas(colorDelVisitante))
+}
+
+procedure Desempatar_(colorDeLocal) {
+    /*
+        PROPOSITO: desempatar para el jugador "colorDeLocal" en la celda actual.
+        PRECONDICION: ninguna
+        PARAMETROS: "colorDeLoca" es un Color que representa a un jugador
+    */
+    Poner(colorDeLocal)
+}
+
+// 3C
+procedure ExpandirBacterias() {
+    /*
+        PROPOSITO: expandir las bacterias en la celda actual.
+        PRECONDICION: *hay un cultivo de bacterias en la celda actual
+                      *hay al menos la cantidad suficiente de nutrientes en la celda actual
+    */
+    if (hayBacterias() && haySuficientesNutrientes()) {
+        PonerBacteria()
+        ConsumirNutrientes()
+    }
+}
+
+procedure ConsumirNutrientes() {
+    /*
+        PROPOSITO: consumir 2 unidades de nutrientes en la celda actual.
+        PRECONDICION: hay al menos 2 unidades de nutrientes en la celda actual
+        OBSERVACION: los nutrientes se representan con bolitas rojas
+    */
+    Sacar__Veces(Rojo, 2)
+}
+
+procedure PonerBacteria() {
+    /*
+        PROPOSITO: poner una bacteria en la celda actual.
+        PRECONDICION: ninguna
+        OBSERVACION: una bacteria se representa con una bolita de color verde
+    */
+    Poner(Verde)
+}
+
+function haySuficientesNutrientes() {
+    /*
+        PROPOSITO: indica si hay suficientes nutrientes por bacteria en la celda actual
+        PRECONDICION: ninguna
+        RESULTADO: Booleano
+        OBSERVACIONES: los nutrientes se representan con bolitas rojas y las bacterias con
+        bolitas verdes
+    */
+    return (nroBolitas(Rojo) >= 2 || (nroBolitas(Rojo) >= nroBolitas(Verde)))
+}
+
+function hayBacterias() {
+    /*
+        PROPOSITO: indica si en la celda actual hay cultivo de bacterias.
+        PRECONDICION: ninguna
+        RESULTADO: Booleano
+        OBSERVACION: las bacterias se representan con bolitas verdes
+    */
+    return (hayBolitas(Verde))
+}
+
+// 3D
+procedure PonerFlecha_AlNorteSiCorresponde(colorDeLaFlecha) {
+    /*
+        PROPOSITO: poner la flecha "colorDeLaFlecha" al Norte si existe espacio hacia esa direccion.
+        PRECONDICION: ninguna
+        PARAMETROS:"colorDeLaFlecha" es un Color que representa una flecha
+    */
+    if (puedeMover(Norte)) {
+        PonerFlecha_Al_(colorDeLaFlecha, Norte)
+    }
+}
+
+procedure PonerFlecha_Al_(colorFlecha ,direccion) {
+    /*
+        PROPOSITO: poner flecha "colorFlecha" en la direccion "direccion" de la celda actual.
+        PRECONDICION: hay al menos una celda en la direccion "direccion" de la celda actual
+        PARAMETROS: *"direccion" es una Direccion que representa la direccion a mover
+                    *colorFlecha es un Color que representa una flecha
+    */
+    Mover(direccion)
+    Poner(colorFlecha)
+    Mover(opuesto(direccion))
+}

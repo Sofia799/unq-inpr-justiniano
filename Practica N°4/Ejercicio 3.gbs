@@ -1,0 +1,21 @@
+/*
+    a. nroBolitas(Negro) + nroBolitas(Azul)
+        *tablero A= tipo Número, valor 3
+        *tablero B= tipo Número, valor 16
+        *tablero C= tipo Número, valor 0
+
+    b. opuesto(opuesto(Este))
+        *tablero A= tipo Direccion, valor Este
+        *tablero B= tipo Direccion, valor Este
+        *tablero C= tipo Direccion, valor Este
+
+    c. nroBolitas(siguiente(Azul))
+        *tablero A= tipo Número, valor 0
+        *tablero B= tipo Número, valor 4
+        *tablero C= tipo Número, valor 0
+
+    d. 2*nroBolitas(colorAImitar)
+        *tablero A= tipo Número, valor 6
+        *tablero B= tipo Número, valor 8
+        *tablero C= tipo Número, valor 0
+*/

@@ -1,0 +1,10 @@
+function tieneBolitas_Al_(color, direccion) {
+    /*
+        PROPOSITO: indica si la celda en la direccion "direccion" tiene bolitas del color "color"
+        PRECONDICION: hay al menos una celda en la direccion "direccion"
+        PARAMETROS: "color" es un Color que representa el color de las bolitas
+                    "direccion" es una Direccion que representa la direccion de la celda a verificar
+    */
+    Mover(direccion)
+    return (hayBolitas(color))
+}

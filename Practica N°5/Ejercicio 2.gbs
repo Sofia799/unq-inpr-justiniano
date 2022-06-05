@@ -1,0 +1,104 @@
+// a. Cuando la celda actual tiene más de 5 bolitas en total
+function hayMasDe5Bolitas() {
+    /*
+        PROPÓSITO: indica si en la celda actual hay mas de 5 bolitas en total.
+        TIPO: BOoleano
+        PRECONDICIONES: ninguna
+    */
+    
+    return (hayMasDe_DeColor_(5, Rojo) || hayMasDe_DeColor_(5, Verde) ||
+            hayMasDe_DeColor_(5, Azul) || hayMasDe_DeColor_(5, Negro))
+}
+
+function hayMasDe_DeColor_(cantidad, color) {
+    /*
+        PROPOSITO: indica si hay mas de cantidad "cantidad" de bolitas del color "color" en la celda actual
+        PRECONDICION: ninguna
+        PARAMETROS: *cantidad es un Número que representa el numero de bolitas
+                    *color es un Color que representa el color de las bolitas
+        RESULTADO: Boolean
+    */
+    return (nroBolitas(color) > cantidad)
+}
+
+
+// b. Cuando la celda actual tiene al menos 5 bolitas en total.
+function hayAlMenos5Bolitas() {
+    /*
+        PROPÓSITO: indica si en la celda actual hay al menos 5 bolitas en total.
+        TIPO: BOoleano
+        PRECONDICIONES: ninguna
+    */
+    
+    return (hayAlMenos_DeColor_(5, Rojo) || hayAlMenos_DeColor_(5, Verde) ||
+            hayAlMenos_DeColor_(5, Azul) || hayAlMenos_DeColor_(5, Negro))
+}
+
+function hayAlMenos_DeColor_(cantidad, color) {
+    /*
+        PROPOSITO: indica si hay al menos la cantidad "cantidad" de bolitas del color "color" en la celda actual.
+        PRECONDICION: ninguna
+        PARAMETROS: *cantidad es un Número que representa el numero de bolitas
+                    *color es un Color que representa el color de las bolitas
+        RESULTADO: Boolean
+    */
+    return (nroBolitas(color) >= cantidad)
+}
+
+
+//c. Cuando la celda actual tiene al menos 5 bolitas en total y el borde se
+// encuentra justo al Este de la misma.
+function hayAlMenos5BolitasYEsBordeAlEste() {
+    /*
+        PROPOSITO: indica si en la celda actual hay al menos 5 bolitas y si al Este de la misma es el borde.
+        PRECONDICION: ninguna
+        RESULTADO: Boolean
+    */
+    return (hayAlMenos5Bolitas() && not puedeMover(Este))
+}
+
+// d. Cuando la celda actual tiene una celda lindante al Norte o al Este.
+function hayCeldaAl_Y_(direccion1, direccion2) {
+    /*
+        PROPOSITO: indica si hay celdas hacia las direcciones "direccion1" y "direccion2" de la celda actual
+        PRECONDICION: ninguna
+        PARAMETROS: ambos parámetros son de tipo Direccion y representan las direcciones lindantes de la celda actual.
+        RESULTADO: Boolean
+    */
+    return (puedeMover(direccion1) && puedeMover(direccion2))
+}
+
+// e. Cuando la celda actual tiene bolitas de todos los colores.
+function hayDeTodosColores() {
+    /*
+        PROPOSITO: indica si hay bolitas de todos los colores en la celda actual
+        PRECONDICION: ninguna
+        RESULTADO:Boolean
+    */
+    return(hayBolitas(Rojo) && hayBolitas(Verde) &&
+           hayBolitas(Azul) && hayBolitas(Negro))
+}
+
+// f. Cuando en la celda actual faltan bolitas de al menos un color (dar una
+// solución sin usar la función del ı́tem anterior y otra usándola).
+
+//solucion 1
+function faltanAlMenosDeUnColor() {
+    /*
+        PROPOSITO: indica si en la celda actual faltan bolitas de al menos un color
+        PRECONDICION: ninguna
+        RESULTADO: booleano
+    */
+    return (not hayDeTodosColores())
+}
+
+//solucion 2
+function faltanAlMenosDeUnColor() {
+    /*
+        PROPOSITO: indica si en la celda actual faltan bolitas de al menos un color
+        PRECONDICION: ninguna
+        RESULTADO: booleano
+    */
+    return (not hayBolitas(Rojo) || not hayBolitas(Verde) ||
+           not hayBolitas(Azul) || not hayBolitas(Negro)))
+}

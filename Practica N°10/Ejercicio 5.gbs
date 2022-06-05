@@ -1,0 +1,26 @@
+function coloresEnLaCeldaActual() {
+    /*
+        PROPOSITO: describe una lista de colores de la celda actual
+        PRECONDICION: ninguna
+        TIPO: Lista de tipo Color
+    */
+    colores := []
+    color := minColor()
+    while (color /= maxColor()) {
+        colores := colores ++ color_Si_(color, hayBolitas(color))
+        color := siguiente(color)
+    }
+    return (colores ++ color_Si_(color, hayBolitas(color)))
+}
+
+function color_Si_(color, condicion) {
+    /*
+        PROPOSITO: describe la lista con el color "color" si se cumple la condicion "condicion"
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color
+                    "condicion" es un Booleano
+        TIPO: Lista de Color
+    */
+    return (choose [color] when (condicion)
+                   [] otherwise)
+}

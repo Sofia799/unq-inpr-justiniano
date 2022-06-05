@@ -1,0 +1,117 @@
+/*
+por filas hay 2 posibilidades y se cambia el dato de la direccion
+*/
+
+
+procedure VaciarTableroDe_PorFilas(color) {
+    /*
+        PROPOSITO: vaciar el tablero de bolitas del color "color".
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color que representa el color de las bolitas a quitar
+        OBSERVACIONES: es un recorrido del tablero por filas
+    */
+    IrAlBorde_(Norte)
+    while (puedeMover(Sur)) {
+        VaciarFilaDe_(color)
+        Mover(Sur)
+    }
+    VaciarFilaDe_(color)
+    IrAlBorde_(Norte)
+
+}
+
+procedure VaciarTablero2De_PorFilas(color) {
+    /*
+        PROPOSITO: vaciar el tablero de bolitas del color "color".
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color que representa el color de las bolitas a quitar
+        OBSERVACIONES: es un recorrido del tablero por filas
+    */
+    IrAlBorde_(Sur)
+    while (puedeMover(Norte)) {
+        VaciarFilaDe_(color)
+        Mover(Norte)
+    }
+    VaciarFilaDe_(color)
+    IrAlBorde_(Sur)
+
+}
+
+/*
+
+*/
+
+procedure VaciarTableroDe_PorCeldas(color) {
+    /*
+        PROPOSITO: vaciar el tablero de bolitas del color "color"
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color que representa el color de las bolitas a quitar
+        OBSERVACIONES: es un recorrido del tablero por celdas
+    */
+    IrAlBorde_(Oeste)
+    IrAlBorde_(Sur)
+    while (puedeMover(Norte) || puedeMover(Este)) {
+        SacarTodas_(color)
+        MoverASigCelda__(Norte,Este)
+    }
+    SacarTodas_(color)
+    IrAlBorde_(Oeste)
+    IrAlBorde_(Sur)
+}
+
+procedure VaciarTablero2De_PorCeldas(color) {
+    /*
+        PROPOSITO: vaciar el tablero de bolitas del color "color"
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color que representa el color de las bolitas a quitar
+        OBSERVACIONES: es un recorrido del tablero por celdas
+    */
+    IrAlBorde_(Oeste)
+    IrAlBorde_(Norte)
+    while (puedeMover(Sur) || puedeMover(Este)) {
+        SacarTodas_(color)
+        MoverASigCelda__(Sur,Este)
+    }
+    SacarTodas_(color)
+    IrAlBorde_(Oeste)
+    IrAlBorde_(Norte)
+}
+
+
+procedure VaciarTablero3De_PorCeldas(color) {
+    /*
+        PROPOSITO: vaciar el tablero de bolitas del color "color"
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color que representa el color de las bolitas a quitar
+        OBSERVACIONES: es un recorrido del tablero por celdas
+    */
+    IrAlBorde_(Este)
+    IrAlBorde_(Norte)
+    while (puedeMover(Sur) || puedeMover(Oeste)) {
+        SacarTodas_(color)
+        MoverASigCelda__(Sur,Oeste)
+    }
+    SacarTodas_(color)
+    IrAlBorde_(Este)
+    IrAlBorde_(Norte)
+}
+
+procedure VaciarTablero4De_PorCeldas(color) {
+    /*
+        PROPOSITO: vaciar el tablero de bolitas del color "color"
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color que representa el color de las bolitas a quitar
+        OBSERVACIONES: es un recorrido del tablero por celdas
+    */
+    IrAlBorde_(Este)
+    IrAlBorde_(Sur)
+    while (puedeMover(Norte) || puedeMover(Este)) {
+        SacarTodas_(color)
+        MoverASigCelda__(Norte,Este)
+    }
+    SacarTodas_(color)
+    IrAlBorde_(Este)
+    IrAlBorde_(Sur)
+}
+
+

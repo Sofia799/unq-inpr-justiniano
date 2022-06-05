@@ -1,0 +1,57 @@
+procedure EscribirFecha___(día, mes, año) {
+/*
+    PROPOSITO: Escribir una fecha conformada por el dia "dia", el mes "mes" y el año "año" en un ancho de 3 celdas.
+    PRECONDICION: *Las celdas a ocupar por la fecha a escribir están vacías.
+                  *"dia" es un dia entre 1 y 31.
+                  *"mes" es un mes entre 1 y 12.
+                  *"año" es un año válido de 4 dígitos.
+    PARAMETROS: *dia es un Número que representa el día de la fecha.
+                *mes es un Número que representa el mes de la fecha.
+                *año es un Número que representa el año de la fecha.
+    OBSERVACION: *"dia" se representa con número de "dia" bolitas azules.
+                 *"mes" se representa con número de "mes" bolitas rojas.
+                 *"año" se representa con número de "año" bolitas verdes. 
+*/
+
+EscribirDia_(día)
+Mover(Este)
+EscribirMes_(mes)
+Mover(Este)
+EscribirAño_(año)
+Mover(Oeste)
+Mover(Oeste)
+
+}
+
+procedure EscribirDia_(dia) {
+    /*
+        PROPÓSITO: Escribir el dia "dia" de una fecha en la celda actual.
+        PARÁMETROS: *dia es un Número que representa el día de una fecha.
+        PRECONDICIONES: ninguna.
+    */
+    repeat (dia) {
+        Poner(Azul)
+    }
+}
+
+procedure EscribirMes_(mes) {
+    /*
+        PROPÓSITO: Escribir el mes "mes" de una fecha en la celda actual.
+        PARÁMETROS: *mes es un Número que representa el mes de una fecha.
+        PRECONDICIONES: ninguna.
+    */
+    repeat (mes) {
+        Poner(Rojo)
+    }
+}
+
+procedure EscribirAño_(año) {
+    /*
+        PROPÓSITO: Escribir el año "año" de una fecha en la celda actual.
+        PARÁMETROS: *año es un Número que representa el año de una fecha.
+        PRECONDICIONES: ninguna.
+    */
+    repeat (año) {
+        Poner(Verde)
+    }
+}

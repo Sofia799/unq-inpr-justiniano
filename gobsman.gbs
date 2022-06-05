@@ -1,0 +1,199 @@
+// 1
+procedure ComerTodosLosCocosDelNivel() {
+    /*
+        PROPOSITO: comer (con gobsman) todos los cocos del nivel.
+        PRECONDICION: *en cada celda del nivel hay un coco
+                      *gobsman esta en la celda actual
+        OBSERVACION: recorrido de procesamiento sobre las celdas del tablero comiendo todos los cocos de las celdas.
+    */
+    llevarGobsmanAInicioDeUnRecorrido__(Este,Norte)
+    while (not esFinalDeUnRecorridoAl_Y_(Este,Norte)) {
+        ComerCoco()
+        MoverGobsmanASiguienteCelda__(Este,Norte)
+    }
+    ComerCoco()
+}
+
+procedure llevarGobsmanAInicioDeUnRecorrido__(direccion1,direccion2) {
+    /*
+        PROPOSITO: ubicar al gobsman al inicio de un recorrido en las direcciones "direccion1" y "direccion2"
+        PRECONDICION: el cabezal esta sobre el gobsman
+                      "direccion1" y "direccion2" no son iguales ni opuestas.
+        PARAMETROS: "direccion1" y "direccion2" son tipo Direccion y representan las direcciones del inicio del
+        recorrido a ubicar al gobsman
+    */
+    LlevarGobsmanAlBorde_(opuesto(direccion1))
+    LlevarGobsmanAlBorde_(opuesto(direccion2))
+}
+
+procedure MoverGobsmanASiguienteCelda__(direccion1, direccion2) {
+    /*
+        PROPOSITO: ubicar al gobsman en la siguiente celda en las direcciones "direccion1" y "direccion2".
+        el cabezal queda sobre el gobsman
+        PRECONDICION: *hay al menos una celda lindante de la actual hacia la direccion "direccion2"
+                      *el cabezal esta sobre el gobsman
+        PARAMETROS: ambos parámetros son tipo Direccion y representan las direcciones de la siguiente celda a 
+        mover.
+    */
+    if (puedeMover(direccion1)) {
+        MoverGobsmanAl_(direccion1)
+    } else {
+        MoverGobsmanAl_(opuesto(direccion1))
+        MoverGobsmanAl_(direccion2)
+    }
+}
+
+//2
+procedure ComerTodasLasCerezasDelNivel() {
+    /*
+        PROPOSITO: comer todas las cerezas del nivel por el gobsman.
+        PRECONDICION: *en las celdas del tablero no hay cocos.
+        OBSERVACION: recorrido de procesamiento por celdas en el nivel comiendo todas las cerezas si hay.
+    */
+    llevarGobsmanAInicioDeUnRecorrido__(Oeste, Sur)
+    while (not esFinalDeUnRecorridoAl_Y_(Este,Norte)) {
+        ComerCerezaSiHay()
+        MoverGobsmanASiguienteCelda__(Este, Norte)
+    }
+    ComerCerezaSiHay()
+}
+
+procedure ComerCerezaSiHay() {
+    /*
+        PROPOSITO: come una cereza en la celda actual si hay por el gobsman.
+        PRECONDICION: ninguna
+    */
+    if (hayCereza()) {
+        ComerCereza()
+    }
+}
+
+//3
+procedure ComerTodoLoQueSeEncuentreEnElNivel() {
+    /*
+        PROPOSITO: comer todas las cerezas y cocos (por el gobsman) en el nivel.
+        PRECONDICION: gobsman esta en la celda actual
+                      en cada celda del nivel hay un coco
+        
+    */
+    ComerTodasLasCerezasDelNivel()
+    ComerTodosLosCocosDelNivel()
+}
+
+//4
+procedure ComerTodoLoQueSeEncuentreEnElNivel2() {
+    /*
+        PROPOSITO: comer todas las cerezas y cocos (por el gobsman) en el nivel.
+        PRECONDICION: gobsman esta en la celda actual
+                      en cada celda del nivel hay un coco o una cereza
+        
+    */
+    llevarGobsmanAInicioDeUnRecorrido__(Oeste,Sur)
+    while (not esFinalDeUnRecorridoAl_Y_(Este,Norte)) {
+        ComerCocoOCereza()
+        MoverGobsmanASiguienteCelda__(Este,Norte)
+    }
+    ComerCocoOCereza()
+}
+
+procedure ComerCocoOCereza() {
+    /*
+        PROPOSITO: comer un coco o cereza (por el gobsman) en la celda actual
+        PRECONDICION: hay una cereza o un coco en la celda actual
+    */
+    if (hayCereza()) {
+        ComerCereza()
+    } else {
+        ComerCoco()
+    }
+}
+
+//5
+procedure RecorrerNivelMuriendoEnElFantasma() {
+    /*
+        PROPOSITO: morir a gobsman en la celda donde esta el fantasma
+        PRECONDICION: *en el tablero no hay cerezas ni cocos
+                      *hay un fantasma en el nivel
+                      *gobsman esta vivo
+        OBSERVACION: recorrido de búsqueda sobre las celdas del tablero buscando al fantasma para morir
+    */
+    llevarGobsmanAInicioDeUnRecorrido__(Oeste, Sur)
+    while (not hayFantasma()) {
+        MoverGobsmanASiguienteCelda__(Este,Norte)
+    }
+    MorirGobsman()
+}
+
+//6
+procedure RecorrerNivelMuriendoSiHayFantasma() {
+    /*
+        PROPOSITO: morir a gobsman en la celda donde esta el fantasma si hay uno,sino deja a gobsman en la
+        esquina "Nor-Este"
+        PRECONDICION: *en el tablero no hay cerezas ni cocos
+                      *gobsman esta vivo
+        OBSERVACION: recorrido de búsqueda sobre las celdas del tablero buscando al fantasma para morir si es que
+        hay, o caso contrario, hasta llegar a la esquina Nor-Este
+    */
+    llevarGobsmanAInicioDeUnRecorrido__(Oeste, Sur)
+    while (not esFinalDeUnRecorridoAl_Y_(Este,Norte) && not hayFantasma() ) {
+        MoverGobsmanASiguienteCelda__(Este,Norte)
+    }
+    MorirGobsmanSiHayFantasma()
+}
+
+procedure MorirGobsmanSiHayFantasma(){
+    /*
+        PROPOSITO: morir al gobsman si hay un fantasma en la celda actual
+        PRECONDICION: el gobsman esta vivo
+    */
+    if (hayFantasma()) {
+        MorirGobsman()
+    }
+
+}
+
+//16
+function esMejorRecorridoHacia_Y_QueHacia_Y_(dirPrincipal1, dirSecundaria1, dirPrincipal2, dirSecundaria2) {
+    /*
+        PROPOSITO: indica si el recorrido hacia las direcciones "dirPrincipal1" y "dirSecundaria1" es mejor
+                    que el recorrido hacia las direcciones "dirPrincipal2" y "dirSecundaria2".
+        PRECONDICION: *"dirPrincipal1" y "dirSecundaria1" no son iguales ni opuestas
+                      *"dirPrincipal2" y "dirSecundaria2" no son iguanes ni opuestas
+        PARAMETROS: "dirPrincipal1" y "dirSecundaria1" son tipo Direccion que representan las direcciones del
+                    primer recorrido a comparar.
+                    "dirPrincipal2" y "dirSecundaria2" son tipo Direccion que representan las direcciones del
+                    segundo recorrido a comparar.
+        TIPO: Booleano
+    */
+    return (cantidadDePuntosEnNivelHacia_Y_(dirPrincipal1, dirSecundaria1)) > 
+            cantidadDePuntosEnNivelHacia_Y_(dirPrincipal2, dirSecundaria2)
+}
+
+//17
+function masDeLaMitadDelNivelSiVaHacia_Y_(dirPrincipal, dirSecundaria) {
+    /*
+        PROPOSITO: indica si el gobsman recorrió más de la mitad del nivel hacia las direcciones "dirPrincipal" y 
+                    "dirSecundaria"
+        PRECONDICION: "dirPrincipal" y "dirSecundaria" no son iguales ni opuestas
+        PARAMETROS: ambos parámetros son tipo Direccion y representan las direcciones a recorrer el nivel por el gobsman
+        TIPO: Booleano
+    */
+    return (cantidadCeldasQueFaltanRecorrer__(dirPrincipal, dirSecundaria) < tamañoDelTablero() div 2)
+}
+
+function cantidadCeldasQueFaltanRecorrer__(dirPrincipal, dirSecundaria) {
+    /*
+        PROPOSITO: describe la cantidad de celdas del nivel que faltan recorrer por el gobsman hacia las direcciones
+                    "dirPrincipal" y "dirSecundaria"
+        PARAMETROS: "dirPrincipal" y "dirSecundaria" son tipo DIreccion y representan las direcciones hacia
+        donde recorre el gobsman
+        PRECONDICION: "dirPrincipal" y "dirSecundaria" no son iguales ni opuestas
+        TIPO: Número
+    */
+    nroQueFaltanRecorrer:=0
+    while (not esFinalDeUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)) {
+        MoverGobsmanASiguienteCelda__(dirPrincipal, dirSecundaria)
+        nroQueFaltanRecorrer:= nroQueFaltanRecorrer + 1
+    }
+    return (nroQueFaltanRecorrer)
+}

@@ -1,0 +1,15 @@
+procedure PintarArcoIris() {
+    /*
+        PROPOSITO: pintar un arcoíris en el tablero. La celda inicial del cabezal es en la esquina SurOeste.
+        PRECONDICION: Hay al menos 8 celdas hacia el Este de la actual y una celda hacia el Norte de la actual.
+    */
+    Pintar3Puntos_(Negro)
+    Mover(Este)
+    Pintar3Puntos_(Azul)
+    Mover(Este)
+    Pintar3Puntos_(Rojo)
+    Mover(Norte)
+    IrAlBorde(Oeste)
+    Pintar3Puntos_(Verde)
+    Mover(Sur)
+}

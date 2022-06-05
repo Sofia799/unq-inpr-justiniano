@@ -1,0 +1,52 @@
+function sinLaPrimeraAparicionDe_En_(elemento, lista) {
+    /*
+        PROPOSITO: Describe la lista "lista" resultante de eliminar el elemento "elemento"
+        PRECONDICION: Ninguna
+        PARAMETROS: "elemento" es un Elemento
+                    "lista" es una Lista de tipo Elemento
+        TIPO: Lista de tipo Elemento
+        OBSERVACION: se usa la idea de separar la lista "lista" en 2 partes.
+    */
+    return (choose  listaAntesDelElemento_En_(elemento, lista) ++ 
+                    resto(listaDesdeElElemento_En_(elemento, lista)) 
+                                                                    when (contiene_A_(lista, elemento))
+                    lista otherwise
+            )
+}
+
+function listaAntesDelElemento_En_(elemento,lista) {
+    /*
+        PROPOSITO: Describe una lista con elementos de la lista "lista" que están antes del
+                   elemento "elemento"
+        PRECONDICION: ninguna
+        PARAMETROS: "elemento" es un Elemento
+                    "lista" es una Lista de tipo Elemento
+        TIPO: Lista de tipo Elemento
+        OBSERVACION: recorrido de búsqueda y acumulación sobre la lista "lista" acumulando los elementos
+                     a la lista hasta encontrar el elemento "elemento"
+    */
+    listaRestante := lista
+    elementosVistos := []
+    while (not esVacía(listaRestante) && not primero(listaRestante) == elemento) {
+        elementosVistos := elementosVistos ++ [primero(listaRestante)]
+        listaRestante := resto(listaRestante)
+    }
+    return (elementosVistos)
+}
+
+function listaDesdeElElemento_En_(elemento, lista) {
+    /*
+        PROPOSITO: Describe una lista con elementos de la lista "lista" que están a partir del
+                   elemento "elemento"
+        PRECONDICION: ninguna
+        PARAMETROS: "elemento" es un Elemento
+                    "lista" es una Lista de tipo Elemento
+        TIPO: Lista de tipo Elemento
+        OBSERVACION: recorrido de búsqueda sobre la lista "lista" buscando el elemento "elemento"
+    */
+    listaRestante := lista
+    while (not esVacía(listaRestante) && not primero(listaRestante) == elemento) {
+        listaRestante := resto(listaRestante)
+    }
+    return (listaRestante)
+}

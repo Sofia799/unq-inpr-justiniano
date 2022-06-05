@@ -1,0 +1,99 @@
+// 7A
+procedure DibujarPiramide() {
+    /*
+        PROPÓSITO: dibujar una pirámide de 5x3. La celda actual coincide con
+        la esquina inf. izquierda de la piramide
+        PRECONDICION:   * hay al menos 2 celdas al Este de la actual y hay 
+                          al menos 4 celdas al Este de la actual.
+                        * la celda actual está vacía
+                        * las 4 celdas hacia el Este de la celda actual estan
+                          vacías
+                        * la celda hacia el noroeste de la actual y sus 2
+                          celdas consecutivas hacia el Este de la misma
+                          estan vacías.
+                        * la 2da celda consecutiva al noroeste de la celda 
+                          actual está vacía.
+                          
+        |_|_|X|_|_|
+        |_|X|X|X|_|
+        |0|X|X|X|X|
+                          
+    */
+    DibujarBase()
+    PasarASiguientePiso()
+    DibujarMedio()
+    PasarASiguientePiso()
+    DibujarPunta()
+    IrHastaLaBaseDesdeLaPunta()
+}
+
+
+// 7B
+procedure DibujarPiramideInvertida() {
+    /*
+        PROPÓSITO: dibujar una pirámide invertida de 5x3. La celda actual
+        coincide con la esquina inf. izquierda de la piramide
+        PRECONDICION:   * hay al menos 2 celdas al Este de la actual y hay 
+                          al menos 4 celdas al Este de la actual.
+                        * la celda actual está vacía
+                        * las 4 celdas hacia el Este de la celda actual estan
+                          vacías
+                        * la celda hacia el noroeste de la actual y sus 2
+                          celdas consecutivas hacia el Este de la misma
+                          estan vacías.
+                        * la 2da celda consecutiva al noroeste de la celda 
+                          actual está vacía.
+                          
+        |_|_|X|_|_|
+        |_|X|X|X|_|
+        |0|X|X|X|X|
+                          
+    */
+    DibujarBase()
+    PasarASiguientePiso()
+    DibujarMedio()
+    PasarASiguientePiso()
+    DibujarPunta()
+    IrHastaLaBaseDesdeLaPunta()
+}
+
+procedure DibujarBase() {
+    /*
+    PROPÓSITO: Dibuja una base de pirámide de 5 celdas de lado
+    PRECONDICIONES:
+    * La celda actual debe estar vacía
+    * Debe haber cuatro celdas vacías al Este del cabezal
+    */
+
+}
+    
+    
+procedure DibujarMedio() {
+    /* PROPÓSITO: Dibuja un sector del medio de pirámide
+    de 3 celdas de lado
+    PRECONDICIONES:
+    * La celda actual debe estar vacía
+    * Debe haber dos celdas vacías al Este del cabezal
+    */
+
+}
+
+
+procedure DibujarPunta() {
+    /*
+    PROPÓSITO: Dibuja una punta de pirámide
+    PRECONDICIONES:
+    * La celda actual debe estar vacía
+    
+}
+
+
+
+
+
+
+
+
+
+
+

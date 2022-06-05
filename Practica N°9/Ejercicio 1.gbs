@@ -1,0 +1,18 @@
+function cantidadesDeRojasEnFilaActual() {
+    /*
+        Proposito: describe una Lista de números cuyos elementos son las cantidades de bolitas rojas en cada 
+        una de las celdas de la fila actual, leídas desde el Oeste hasta el Este.
+        PRECONDICION: ninguna
+        Tipo: Lista de Números
+        OBSERVACION: recorrido de acumuacion por celdas de la fila actual acumulando, en una lista, la cantidad 
+        de bolitas rojas.
+    */
+    IrAlBorde(Oeste)
+    cantidadRojas := []
+    while (puedeMover(Este)) {
+        cantidadRojas := cantidadRojas ++ [nroBolitas(Rojo)]
+        Mover(Este)
+    }
+    return (cantidadRojas ++ [nroBolitas(Rojo)])
+    
+}

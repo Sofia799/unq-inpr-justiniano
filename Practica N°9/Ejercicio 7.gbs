@@ -1,0 +1,86 @@
+// 7a
+function primerCartaDeLaMano_(mano) {
+    /*
+        PROPOSITO: describe la primer carta de la mano "mano" 
+        PRECONDICION: "mano" no es vacía
+        PARAMETROS: "mano" es una Lista de tipo Carta
+        TIPO: Carta
+    */
+    return (primero(mano))
+}
+
+// 7b
+function segundaCartaDeLaMano_(mano) {
+    /*
+        PROPOSITO: describe la segunda carta de la mano "mano" 
+        PRECONDICION: hay al menos 2 cartas en "mano"
+        PARAMETROS: "mano" es una Lista de tipo Carta
+        TIPO: Carta
+    */
+    return (segundo_(mano))
+}
+
+function segundo_(lista) {
+    /*
+        PROPOSITO: describe el segundo elemento de la lista "lista"
+        PRECONDICION: hay al menos dos elementos en la lista "lista"
+        PARAMETROS: "lista" es una Lista de Elementos
+        TIPO: Elemento
+    */
+    return (primero(resto(lista)))
+}
+
+// 7c
+function tercerCartaDeLaMano_(mano) {
+    /*
+        PROPOSITO: describe la tercer carta de la mano "mano" 
+        PRECONDICION: hay al menos 3 cartas en "mano"
+        PARAMETROS: "mano" es una Lista de tipo Carta
+        TIPO: Carta
+    */
+    return (tercero_(mano))
+}
+
+function tercero_(lista) {
+    /*
+        PROPOSITO: describe el tercer elemento de la lista "lista"
+        PRECONDICION: hay al menos 3 elementos en la lista "lista"
+        PARAMETROS: "lista" es una Lista de Elementos
+        TIPO: Elemento
+    */
+    return (primero(resto(resto(lista))))
+}
+
+// 7d
+function laMano_LuegoDeRobarUnaCartaDe(mano, mazo) {
+    /*
+        PROPOSITO: describe la mano "mano" resultante luego de robar una carta del mazo "mazo"
+        PRECONDICION: "mazo" no es vacío
+                      "mano" tiene al menos 3 cartas
+        PARAMETROS: Ambos parámetros Lista de tipo Carta
+        TIPO: Lista de tipo Carta
+    */
+    return (mano ++ [primero(mazo)])
+}
+
+// 7e
+function laMano_LuegoDeJugarUnaCarta(mano) {
+    /*
+        PROPOSITO: describe la mano "mano" luego de jugar una carta
+        PRECONDICION: "mano" no es vacía
+        PARAMETROS: "mano" es una Lista de tipo Carta
+        TIPO: Lista de tipo Carta
+    */
+    return (resto(mano))
+}
+
+//7f
+function laMano_LuegoDeJugarLaSegundaCarta(mano) {
+    /*
+        PROPOSITO: describe la mano "mano" resultante de jugar la segunda carta
+        PRECONDICION: "mano" tiene al menos 2 cartas
+        PARAMETROS: "mano" es una Lista de tipo Carta
+        TIPO: Lista de tipo Carta
+    */
+    return (resto(resto(mano)))
+}

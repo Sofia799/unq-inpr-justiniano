@@ -1,0 +1,94 @@
+procedure PudrirManzana() {
+    /*
+        PROPOSITO: pudrir una manzana en la celda actual.
+        PRECONDICION: *hay al menos una manzana en buen estado en la celda actual
+                      *hay al menos un gusano en la celda actual
+        OBSERVACIONES: las manzanas en buen estado se representan con bolitas
+                        de color Rojo, las manzanas podridas con bolitas de color Negro, y los
+                        gusanos con bolitas de color Verde.
+    */
+    Reemplazar_Y_Por_(Rojo, Verde, Negro)
+}
+
+procedure Reemplazar_Y_Por_(primerColorAReemplazar, segundoColorAReemplazar, colorAAgregar) {
+    /*
+        PROPOSITO: reemplazar los colores "primerColorAReemplazar" y"segundoColorAReemplazar" por
+                    el color "colorAAgregar" en la celda actual.
+        PRECONDICIONES: hay al menos una bolita cada uno de los colores "primerColorAReemplazar" y 
+                        "segundoColorAReemplazar"
+        PARAMETROS: los 3 parámetros son tipo Color que representan el color de las bolitas
+    */
+    Sacar(primerColorAReemplazar)
+    Sacar(segundoColorAReemplazar)
+    Poner(colorAAgregar)
+}
+
+procedure PudrirHasta_Manzanas(cantidadAPudrir) {
+    /*
+        PROPOSITO: pudrir hasta la cantidad "cantidadAPudrir" de manzanas en la celda actual
+        PRECONDICION: ninguna
+        PARAMETROS: "cantidadAPudrir" es un Número que representa la cantidad máxima de manzanas a pudrir
+    */
+    if (hayAlMenos_ManzanasYGusanos(cantidadAPudrir)) {
+        Sacar_Manzanas(cantidadAPudrir)
+    } else {
+        SacarManzanasExistentes()
+    }
+}
+
+procedure SacarManzanasExistentes() {
+    /*
+        PROPOSITO:sacar las manzanas existentes en la celda actual
+        PRECONDICION: ninguna
+    */
+    if (cantidadManzanas() > cantidadGusanos()) {
+        Sacar_Manzanas(cantidadGusanos())
+    } else {
+        Sacar_Manzanas(cantidadManzanas())
+    }
+}
+
+
+procedure Sacar_Manzanas(cantidadAPudrir) {
+    /*
+        PROPOSITO: sacar la cantidad "cantidadAPudrir" de manzanas en la celda actual.
+        PRECONDICION: hay al menos la cantidad "cantidadAPudrir" de manzanas y gusanos en la celda actual
+        PARAMETROS: cantidadAPudrir es un Número que representa la cantidad de manzanas a sacar
+    */
+    repeat (cantidadAPudrir) {
+        PudrirManzana()
+    }
+}
+
+function hayAlMenos_ManzanasYGusanos(cantidad) {
+    /*
+        PROPOSITO: indica si hay la cantidad "cantidad" de suficiente de manzanas y gusanos en la celda actual
+        PRECONDICION: ninguna
+        PARAMETROS: "cantidad" es un Número que representa la cantidad suficiente de manzanas y gusanos
+        RESULTADO: Booleano
+        OBSERVACION: las manzanas sanas se representan con bolitas rojas y los gusanos se representan con bolitas
+                    verdes
+    */
+    return (cantidadManzanas() >= cantidad && cantidadGusanos() >= cantidad)
+}
+
+
+function cantidadManzanas() {
+    /*
+        PROPOSITO: describe la cantidad de manzanas existentes en la celda actual
+        PRECONDICION:ninguna
+        RESUSLTADO:Número
+        OBSERVACION:las manzanas sanas se representan con bolitas rojas
+    */
+    return (nroBolitas(Rojo))
+}
+
+function cantidadGusanos() {
+    /*
+        PROPOSITO: describe la cantidad de gusanos existentes en la celda actual
+        PRECONDICION:ninguna
+        RESUSLTADO:Número
+        OBSERVACION:los gusanos se representan con bolitas verdes
+    */
+    return (nroBolitas(Verde))
+}

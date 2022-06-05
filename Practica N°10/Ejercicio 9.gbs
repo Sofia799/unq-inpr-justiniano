@@ -1,0 +1,46 @@
+// 9a
+function repetición_VecesDe_(cantidad, elemento) {
+    /*
+        PROPOSITO: describe una lista con la cantidad "cantidad" de repeticiones del elemento "elemento".
+                   describe lista vacía si "cantidad" es <= 0
+        PRECONDICION: ninguna
+        PARAMETROS: "cantidad" es un Numero
+                    "elemento" es un Elemento de cualquier tipo
+        TIPO: Lista de Elemento
+    */
+    return (choose  [] when (cantidad <= 0)
+                    repeticiones_De(cantidad, elemento) otherwise)
+}
+
+function repeticiones_De(cantidad, elemento) {
+     /*
+        PROPOSITO: describe una lista con la cantidad "cantidad" de repeticiones del elemento "elemento".
+        PRECONDICION: ninguna
+        PARAMETROS: "cantidad" es un Numero
+                    "elemento" es un Elemento de cualquier tipo
+        TIPO: Lista de Elemento
+    */
+    repeticiones := []
+    repeat (cantidad) {
+        repeticiones := repeticiones ++ [elemento]
+    }
+    return (repeticiones)
+}
+
+// 9b
+function laLista_Clonada_Veces(lista, cantidad) {
+    /*
+        PROPOSITO: describe la lista "lista" resultante de clonar una cantidad de veces indicado por "cantidad"
+        PRECONDICION: ninguna
+        PARAMETROS: "lista" es una Lista de cualquier tipo de Elemento
+        TIPO: Lista de Elemento
+    */
+    listaClonada := []
+    repeat (cantidad) {
+        listaClonada := listaClonada ++ lista
+    }
+    return (listaClonada)
+}
+
+// 9c
+function losElementosDe_Clonados_Veces

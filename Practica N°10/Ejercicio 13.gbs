@@ -1,0 +1,42 @@
+// 13a
+function nrosParesDe_(numeros) {
+    /*
+        PROPOSITO: describe una lista de numeros pares que aparecen en "numeros"
+        PRECONDICION: ninguna
+        PARAMETROS: "numeros" es una Lista de tipo Numero
+        TIPO: Lista de tipo NUmero
+        OBSERVACION:
+    */
+    numerosPares := []
+    foreach nro in numeros {
+        numerosPares := numerosPares ++ singular_Si_(nro, esPar_(nro))
+    }
+    return (numerosPares)
+}
+
+function esPar_(numero) {
+    /*
+        PROPOSITO: indica si "numero" es par
+        PRECONDICION: ninguna
+        PARAMETROS: "numero" es un Numero
+        TIPO: BOoleano
+    */
+    return(numero mod 2 == 0)
+}
+
+// 13b
+function laLista_SinElElemento_(lista,elemento) {
+    /*
+        PROPOSITO: describe la lista resultante de quitar todas las apariciones de "elemento" en "lista"
+        PRECONDICION: ninguna
+        PARAMETROS: "lista" es una Lista de Elemento
+                    "elemento" es un Elemento
+        TIPO: Lista de Elemento
+        OBSERVACION:
+    */
+    listaSinElElemento := []
+    foreach elementoLista in lista {
+        listaSinElElemento := listaSinElElemento ++ singular_Si_(elementoLista, elementoLista /= elemento)
+    }
+    return (listaSinElElemento)
+}

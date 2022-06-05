@@ -1,0 +1,29 @@
+function lista_HomologadaPorDebajoDe_A_(numeros, umbral, default) {
+    /*
+        PROPOSITO: describe una lista de numeros basada en "numeros" en donde cada elemento que sea
+                   mayor o igual a "umbral" permanece y el que sea menor a "default" lo reemplaza por "umbral"
+        PRECONDICION: ninguna
+        PARAMETROS: "numeros" es una Lista de tipo Numero
+                    "umbral" y "default" son tipo Numero
+        TIPO: Lista de Numero
+        OBSERVACION: recorrido de transformacion sobre la lista "numeros" transformando cada elemento a "default" 
+                     si cumple con la condicion de que sean menores a "umbral"
+    */
+    listaHomologada := []
+    foreach nro in numeros {
+        listaHomologada := listaHomologada ++ [default_Si_CasoContrario_(default, nro < umbral, nro)]
+    }
+    return (listaHomologada)
+}
+
+function default_Si_CasoContrario_(default, condicion, numero) {
+    /*
+        PROPOSITO: describe "default" si la condicion "condicion" da verdadero. Caso contrario describe "numero"
+        PRECONDICION: ninguna
+        PARAMETROS: "default" y "numero" son tipo Numero
+                    "condicion" es un Booleano
+        TIPO: Numero
+    */
+    return (choose default when (condicion)
+                   numero otherwise)
+}

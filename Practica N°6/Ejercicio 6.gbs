@@ -1,0 +1,16 @@
+// la direccion parametrizada
+procedure VaciarFilaDe_Hacia_(color, direccion) {
+    /*
+        PROPOSITO: vaciar la fila actual de bolitas del color "color" hacia la direccion "direccion"
+        PRECONDICION: ninguna
+        PARAMETROS:"color" es un Color que representa el color de las bolitas a quitar
+                    "direccion" es una Direccion que representa la direccion a mover de la fila.
+    */
+    IrAlBorde_(opuesto(direccion))
+    while (puedeMover(direccion)) {
+        SacarTodas_(color)
+        Mover(direccion)
+    }
+    SacarTodas_(color)
+    IrAlBorde_(opuesto(direccion))
+}

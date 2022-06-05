@@ -1,0 +1,43 @@
+// 12a
+function costoDeBoleto_(boleto) {
+    /*
+        PROPOSITO: describe el costo del boleto "boleto"
+        PRECONDICION: ninguna
+        PARAMETROS:"boleto" es un BoletoDeColectivo
+        TIPO:Numero
+    */
+    return (18 + (nroTramos(boleto) * 3))
+}
+
+// 12b
+function elBoleto_TieneElMismoNúmeroQue_(boleto1, boleto2) {
+    /*
+        PROPOSITO: indica si los boletos "boleto1" y "boleto2" tienen el mismo número de boleto
+        PRECONDICION: ninguna
+        PARAMETROS: ambos parámetros son tipo BoletoDeColectivo
+        TIPO: Booleano
+    */
+    return (nroBoleto(boleto1) == nroBoleto(boleto2))
+}
+
+// 12c
+function elBoleto_EsParejaCapicúaDe_(boleto1,boleto2) {
+    /*
+        PROPOSITO:indica si el nro de boleto de "boleto1" es igual al nro de boleto de "boleto2" dado vuelta.
+        PRECONDICION: ninguna
+        PARAMETROS:ambos parámetros son tipo BoletoDeColectivo
+        TIPO:Booleano
+    */
+    return (nroBoleto(boleto1) == nroBoletoDadoVuelta(boleto2))
+}
+
+function nroBoletoDadoVuelta(boleto) {
+    /*
+        PROPOSITO: describe el nro de boleto de "boleto" dado vuelta
+        PRECONDICION: ninguna
+        PARAMETROS: "boleto2" es un BoletoDeColectivo
+        TIPO: Lista de Numero
+    */
+    return ([ultimoDigito_(boleto)] ++ [anteultimoDigito_(boleto)] ++ [tercero_(boleto)] ++ 
+             segundoDigito_(boleto) ++ [primerDigito_(boleto)])
+}

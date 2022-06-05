@@ -1,0 +1,29 @@
+program {
+    /*
+        PROPÓSITO: Vaciar cuadrado multicolor de 2x2.
+        PRECONDICIONES: Hay al menos una celda al Este y al menos una al Norte de la celda actual.
+                        Hay al menos una bolita de cada color en la celda 
+                        actual, lindantes y esquina.
+            * ....
+    */
+    Sacar(Azul)
+    Sacar(Verde)
+    Sacar(Rojo)
+    Sacar(Negro)
+    Mover(Norte)
+    Sacar(Azul)
+    Sacar(Verde)
+    Sacar(Rojo)
+    Sacar(Negro)
+    Mover(Este)
+    Sacar(Azul)
+    Sacar(Verde)
+    Sacar(Rojo)
+    Sacar(Negro)
+    Mover(Sur)
+    Sacar(Azul)
+    Sacar(Verde)
+    Sacar(Rojo)
+    Sacar(Negro)
+    Mover(Oeste)
+}

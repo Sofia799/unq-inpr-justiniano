@@ -1,0 +1,37 @@
+//8a
+function primerasTresCartasDeLaTira_(tira) {
+    /*
+        PROPOSITO: describe una lista con las primeras 3 cartas de la tira "tira"
+        PRECONDICION: "tira" tiene al menos 3 cartas
+        PARAMETROS: "tira" es una Lista de tipo Carta
+        TIPO:Lista de tipo Carta
+    */
+    return ([primero(tira)] ++ [segundo_(tira)] ++ [tercero_(tira)])
+}
+
+// 8b
+function laMano_TieneJugadaParaAgregarALaTira_(mano, tira) {
+    /*
+        PROPOSITO: indica si la primer carta de la mano "mano" puede ser jugada para agregar a la tira "tira"
+        PRECONDICION: "mano" y "tira" tienen al menos una carta
+        PARAMETROS: ambos paráetros son Listas d tipo Carta
+        TIPO: BOoleano
+    */
+    return (palo(primero(mano)) /= palo(primero(tira)) 
+            && 
+            numero(primero(mano) < numero(primero(tira)))
+        )
+}
+
+// 8c
+function laTira_DespuésDeJugar_(tira, carta) {
+    /*
+        PROPOSITO: describe la tira "tira" resultante de jugar la carta "carta"
+        PRECONDICION: "tira" no es vacía
+                      "carta" es una carta válida en condiciones para agregarla a la tira "tira"
+        PARAMETROS: "tira" es una Lista de tipo Carta
+                    "carta" es una Carta
+        TIPO: Lista de tipo Carta
+    */
+    return (tira ++ [carta])
+}

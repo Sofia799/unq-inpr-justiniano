@@ -1,0 +1,15 @@
+function colorMinimoConBolitas() {
+    /*
+        PROPOSITO:describe el color mas chico del cual hay bolitas en la celda
+        actual
+        PRECONDICION: hay al menos una bolita de color en la celda actual
+        TIPO: Color
+        OBSERVACION: recorrido de busqueda sobre los colores
+    
+    */
+    colorActual := minColor()
+    while (not hayBolitas(colorActual)) {
+        colorActual := siguiente(colorActual)
+    }
+    return (colorActual)
+}

@@ -1,0 +1,93 @@
+//2
+    /*Generalizar el ejercicio del reloj analógico de agujas de la práctica 
+    anterior para que se pueda pasar el radio como parámetro. O sea, escribir
+    un procedimiento:
+    DibujarRelojAnalógicoSimplificadoDeRadio_(radio)
+    que ponga los números del reloj como en el programa original, pero donde 
+    el radio que recibido por parámetro indica el tamaño: mientras más grande
+    es el radio, más alejados están los números del centro.
+    Por ejemplo, el ejercicio original puede obtenerse con el comando
+    DibujarRelojAnalógicoSimplificadoDeRadio_(2)
+    */
+    
+program {
+    DibujarRelojAnalógicoSimplificadoDeRadio_(2)
+}
+
+procedure DibujarRelojAnalógicoSimplificadoDeRadio_(radio) {
+    /*
+        PROPÓSITO: Dibujar un reloj analógico simplificado de radio "radio".
+        El cabezal se ubica en el medio del radio "radio" de todas las
+        direcciones.
+        PRECONDICION: hay al menos un radio de "radio" celdas en cada
+        dirección de la celda actual.
+        PARAMETROS: "radio" es un Número y describe el radio del reloj a 
+        dibujar
+    */
+    PonerHora_DeRadio_Hacia_(12, radio, Norte)
+    UbicarAl_DeRadio_(Sur, radio)
+    PonerHora_DeRadio_Hacia_(3, radio, Este)
+    UbicarAl_DeRadio_(Oeste, radio)
+    PonerHora_DeRadio_Hacia_(6, radio, Sur)
+    UbicarAl_DeRadio_(Norte, radio)
+    PonerHora_DeRadio_Hacia_(9, radio, Oeste)
+    UbicarAl_DeRadio_(Este, radio)
+}
+
+procedure PonerHora_DeRadio_Hacia_(númeroHora, radio, direccion) {
+    /*
+        PROPOSITO: Poner la hora de las "númeroHora" de un reloj en un radio 
+        de "radio" celdas a la direccion "direccion". 
+        PRECONDICION: *Hay al menos un radio de tamaño "radio" hacia la
+        direccion "direccion" de la celda actual.
+        PARAMETROS: radio es un Número que representa el radio de un reloj
+    */
+    UbicarAl_DeRadio_(direccion, radio)
+    Poner_DeColor_(númeroHora, Rojo)
+}
+
+procedure UbicarAl_DeRadio_(direccion, radio) {
+    /*
+        PROPÓSITO: Ubicar el cabezal en la direccion "direccion" de un
+        reloj de radio "radio"
+        PRECONDICION: hay al menos un radio de "radio" celdas en la direccion
+        "direccion"
+        PARAMETROS: *direccion es una Direccion q describe la direccion a mover
+                    *radio es un Número que describe el radio de un reloj
+    */
+    repeat(radio) {
+        Mover(direccion)
+    }
+}
+
+procedure Poner_DeColor_(cantidadAPoner,colorAPoner) {
+    /*
+        PROPOSITO: Poner "cantidadAPoner" bolitas de color "colorAPoner" en
+        la celda actual.
+        PRECONDICION:ninguna
+        PARAMETROS: *cantidadAPoner es un Numero que representa el número
+        de bolitas a poner 
+                    *colorAPoner es un Color que representa el color de las
+        bolitas
+    */
+    repeat(cantidadAPoner) {
+        Poner(colorAPoner)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

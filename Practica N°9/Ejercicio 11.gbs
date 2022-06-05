@@ -1,0 +1,53 @@
+function esCapicúa_(boleto) {
+    /*
+        PROPOSITO: indica si el numero del boleto "boleto" es capicúa
+        PRECONDICION: ninguna
+        PARAMETROS: "boleto" es un BoletoDeColectivo
+        TIPO:Booleano
+        OBSERVACION: Un boleto es capicúa cuando el primer dígito es igual al último, y el segundo al anteúltimo.
+    */
+    return (primerDigito_(nroBoleto(boleto)) == ultimoDigito_(nroBoleto(boleto))
+            && 
+            segundoDigito_(nroBoleto(boleto)) == anteultimoDigito_(nroBoleto(boleto))
+            )
+}
+
+function primerDigito_(nroBoleto) {
+    /*
+        PROPOSITO: describe el primer digito del numero de boleto dado
+        PRECONDICION: "ninguna
+        PARAMETROS: "nroBoleto" es una Lista de tipo Numero
+        TIPO: Numero
+    */
+    return (primero(nroBoleto))
+}
+
+function segundoDigito_(nroBoleto) {
+    /*
+        PROPOSITO: describe el segundo digito del numero de boleto dado
+        PRECONDICION: "ninguna
+        PARAMETROS: "nroBoleto" es una Lista de tipo Numero
+        TIPO: Numero
+    */
+    return (segundo_(nroBoleto))
+}
+
+function ultimoDigito_(nroBoleto) {
+    /*
+        PROPOSITO: describe el quinto digito del numero de boleto dado
+        PRECONDICION: "ninguna
+        PARAMETROS: "nroBoleto" es una Lista de tipo Numero
+        TIPO: Numero
+    */
+    return (primero(resto(resto(resto(resto(nroBoleto))))))
+}
+
+function anteultimoDigito_(nroBoleto) {
+    /*
+        PROPOSITO: describe el cuarto digito del numero de boleto dado
+        PRECONDICION: "ninguna
+        PARAMETROS: "nroBoleto" es una Lista de tipo Numero
+        TIPO: Numero
+    */
+    return (primero(resto(resto(resto(nroBoleto)))))
+}

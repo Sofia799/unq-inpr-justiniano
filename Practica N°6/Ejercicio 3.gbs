@@ -1,0 +1,15 @@
+procedure VaciarFilaDe_(color) {
+    /*
+        PROPOSITO: vaciar la fila actual de bolitas del color "color".
+        PRECONDICION: la fila actual debe tener bolitas del color "color"
+        PARAMETROS: "color" es un Color que representa el color de las bolitas a quitar
+    */
+    IrAlBorde_(Oeste)
+    while (puedeMover(Este)) {
+        SacarTodas_(color)
+        Mover(Este)
+    }
+    SacarTodas_(color)
+    IrAlBorde_(Oeste)
+}
+

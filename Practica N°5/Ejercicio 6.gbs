@@ -1,0 +1,81 @@
+// 6A
+procedure GerminarSemilla() {
+    /*
+        PROPOSITO: germinar una semilla en árbol en la celda actual.
+        PRECONDICION: ninguna
+    */
+    if (haySemilla() && hayNutrientesSuficientesPorSemilla()) {
+        Sacar_Semillas(1)
+        Sacar_Nutrientes(3)
+        Poner_Arboles(1)
+    }
+}
+
+function hayNutrientesSuficientesPorSemilla() {
+    /*
+        PROPOSITO: indica si hay los nutrientes suficientes por semilla en la celda actual
+        PRECONDICION:ninguna
+        TIPO: Booleano
+    */
+    return (cantidadNutrientes() >= 3)
+}
+
+function cantidadNutrientes() {
+    /*
+        PROPOSITO: describe la cantidad de nutrientes de la celda actual
+        PRECONDICION: ninguna
+        TIPO: Numero
+        OBSERVACION: los nutrientes se representan con bolitas azules
+    */
+    return (nroBolitas(Azul))
+}
+
+function haySemilla() {
+    /*
+        PROPOSITO: indica si hay una semilla en la celda actual
+        PRECONDICION: ninguna
+        TIPO: Booleano
+        OBSERVACION: las semillas se representan con bolitas rojas
+    */
+    return (hayBolitas(Rojo))
+}
+
+// 6B
+procedure AlimentarÁrboles() {
+    /*
+        PROPOSITO: alimentar todos los árboles de la celda actual.
+        PRECONDICION: hay al menos un árbol en la celda actual
+
+    */
+    if (cantidadNutrientes() >= cantidadArboles()) {
+        Sacar_Nutrientes(cantidadArboles())
+    } else {
+        SacarTodosLosNutrientes()
+    }
+}
+
+function cantidadArboles() {
+    /*
+        PROPOSITO: describe la cantidad de árboles de la celda actual
+        PRECONDICION: ninguna
+        TIPO: Número.
+        OBSERVACION: los arboles se representan con bolitas verdes
+    */
+    return (nroBolitas(Verde))
+}
+
+procedure SacarTodosLosNutrientes() {
+    /*
+        PROPOSITO: Sacar todos los nutrientes de la celda actual.
+        PRECONDICION: ninguna
+        OBSERVACION: los nutrientes se representan con bolitas azules
+    */
+    SacarTodas_(Azul)
+}
+
+// 6C
+procedure ExplotarBomba() {
+    /*
+        PROPOSITO: 
+    */
+}

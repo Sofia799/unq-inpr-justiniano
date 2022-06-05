@@ -1,0 +1,11 @@
+function hayBolitas_EnElBorde_(color, direccion) {
+    /*
+        PROPOSITO: indica si hay bolitas del color "color" en el borde de la direccion "direccion"
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color que representa el color de las bolitas 
+                    "direccion" es una Direccion que representa la direccion del borde
+        TIPO: Booleano
+    */
+    IrAlBorde(direccion)
+    return (hayBolitas(color))
+}

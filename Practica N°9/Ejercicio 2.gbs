@@ -1,0 +1,9 @@
+function cantidadDeRojasADistancia2DelBordeOesteDe_(listaNumeros) {
+    /*
+        PROPOSITO: describe la cantidad de bolitas rojas a distancia 2 del borde oeste dada la lista "listaNumeros"
+        PRECONDICION: hay al menos 2 celdas de distancia del borde oeste
+        PARAMETROS: "listaNumeros" es una Lista de Numeros que representa las cantidades de bolitas rojas de una fila.
+        TIPO: Numero
+    */
+    return (primero(resto(resto(listaNumeros))))
+}

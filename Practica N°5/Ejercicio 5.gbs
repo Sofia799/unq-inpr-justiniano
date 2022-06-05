@@ -1,0 +1,61 @@
+// 5A
+procedure Poner_Si_(color, condición) {
+    /*
+       PROPOSITO: poner una bolita del color "color" si se cumple con la condicion "condicion".
+       PRECONDICION: ninguna
+       PARAMETROS: "color" es un Color que representa el color de las bolitas a poner
+                    "condicion" es un Booleano que representa la condicion booleana.
+    */
+    if (condición) {
+        Poner(color)
+    }
+}
+
+// 5B
+procedure Sacar_Si_(color, condicion) {
+    /*
+        PROPOSITO: sacar una bolita del color "color" si se cumple con la condicion "condicion".
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color que representa el color de las bolitas a sacar
+                    "condicion" es un Booleano que representa la condicion booleana
+    */
+    if(condicion) {
+        Sacar(color)
+    }
+}
+
+// 5C
+procedure DesempatarParaElLocal__(colorDelLocal,colorDelVisitante) {
+    /*
+        PROPOSITO: Desempatar para el jugador local "colorDelLocal" entre los jugadores "colorDelLocal" 
+                    Y "colorDelVisitante" en la celda actual.
+        PRECONDICION: *en la celda actual hay un empate entre los jugadores "colorDelLocal" y "colorDelVisitante"
+                      *la celda actual no está vacía.
+        PARAMETROS: *"colorDelLocal" es un Color que representa a un jugador de local.
+                    *"colorDelVisitante" es un Color que representa a un jugador de visitante.
+    */
+    Poner_Si_(colorDelLocal, hayEmpate(colorDelLocal, colorDelVisitante)
+}
+
+// 5D
+procedure Reemplazar_Y_Por_(primerColorAReemplazar, segundoColorAReemplazar, colorAAgregar) {
+    /*
+        PROPOSITO: reemplazar los colores "primerColorAReemplazar" y"segundoColorAReemplazar" por
+                    el color "colorAAgregar" en la celda actual.
+        PRECONDICIONES: hay al menos una bolita cada uno de los colores "primerColorAReemplazar" y 
+                        "segundoColorAReemplazar"
+        PARAMETROS: los 3 parámetros son tipo Color que representan el color de las bolitas
+    */
+    Sacar_Si_(primerColorAReemplazar, hayBolitas(primerColorAReemplazar))
+    Sacar_Si_(segundoColorAReemplazar, hayBolitas(segundoColorAReemplazar))
+    
+}
+
+// no se pueden usar el Sacar_Si y el Poner_Si porque para poner la bolita del color dado no es necesario que
+// haya una condicion. Para sacar bolitas si
+
+/*
+5E
+nos trae el beneficio de que si se cumple la condicion, osea da true, va a sacar/poner bolitas. 
+
+*/

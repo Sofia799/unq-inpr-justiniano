@@ -1,0 +1,32 @@
+type Coordenada is record {
+    /*
+    PROPOSITO: modelar una coordenada de dos puntos.
+    INV. REP: ninguna
+    */
+    field fila     //Numero
+    field columna  //Numero
+}
+
+// 5a
+function coordenada__(x,y) {
+    /*
+        PROPOSITO: describir una coordenada con los puntos fila y columna "x" e "y"
+        PRECONDICION: ninguna
+        PARAMETROS: ambos parámetros son tipo Numero q representan los puntos de la coordenada
+        TIPO: Coordenada
+    */
+    return (Coordenada (fila <- x,
+                        columna <- y))
+}
+
+//5b
+function esCoordenadaOrigen_(coordenada) {
+    /*
+        PROPOSITO: indica si la coordenada "coordenada" es coordenada origen.
+        PRECONDICION: ninguna
+        PARAMETROS: "coordenada" es una Coordenada que representa la coordenada a evaluar si es origen
+        TIPO: Booleano
+    */
+    return (fila(coordenada) == 0 && columna(coordenada == 0))
+}
+

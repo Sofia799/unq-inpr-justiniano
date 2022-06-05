@@ -1,0 +1,6 @@
+// 3a
+function las3PrimerasDe_ConLaMismaCantidad(numeros) {
+    /*
+        PROPOSITO: indica si en las primeras 3 celdas al oeste de la fila actual 
+    */
+}

@@ -1,0 +1,27 @@
+function direccionesAlBorde() {
+    /*
+        PROPOSITO: describe la lista de direcciones en la que el cabezal no se puede mover
+        PRECONDICION: ninguna
+        TIPO: Lista de tipo Direccion
+        OBSERVACION: 
+    */
+    direcciones := []
+    direccionAPuntar := minDir()
+    while (direccionAPuntar /= maxDir()) {
+        direcciones := direcciones ++ direccionSiNoPuedeMover(direccionAPuntar)
+        direccionAPuntar := siguiente(direccionAPuntar)
+    }
+    return (direcciones ++ direccionSiNoPuedeMover(direccionAPuntar))
+}
+
+function direccionSiNoPuedeMover(direccion) {
+    /*
+        PROPOSITO: describe la lista con la direccion "direccion" si el cabezal no puede moverse a dicha direccion.
+                   describe lista vacía caso contrario.
+        PRECONDICION: ninguna
+        PARAMETROS: "direccion" es una Direccion que representa la direccion a evaluar si el cabezal no puede moverse
+        TIPO: Lista de Direccion
+    */
+    return (choose [direccion] when (not puedeMover(direccion))
+                  [] otherwise)
+}

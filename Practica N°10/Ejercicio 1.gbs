@@ -1,0 +1,11 @@
+procedure PonerColores_EnLaCeldaActual(colores) {
+    /*
+        PROPOSITO: poner una bolita de color de la lista de colores "colores" en la celda actual.
+        PRECONDICION: ninguna
+        PARAMETROS: "colores" es una Lista de tipo Color
+        OBSERVACION: recorrido de p la lista "colores" 
+    */
+    foreach color in colores {
+        Poner(color)
+    }
+}

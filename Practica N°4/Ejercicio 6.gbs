@@ -1,0 +1,9 @@
+procedure SacarTodas_(colorASacar) {
+    /*
+        PROPOSITO: sacar todas las bolitas del color "color" de la celda actual.
+        PRECONDICION: ninguna
+        PARAMETROS: colorASacar es un Color que representa el color de las bolitas a sacar
+    */
+    Sacar__Veces(colorASacar, nroBolitas(colorASacar))
+}
+

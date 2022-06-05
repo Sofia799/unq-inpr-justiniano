@@ -1,0 +1,35 @@
+procedure IrAlInicioDeUnRecorridoAl_Y_(dirPrincipal, dirSecundaria) {
+    /*
+        PROPOSITO: ubicar el cabezal al inicio de un recorrido en las direcciones "dirPrincipal" y "dirSecundaria".
+        PRECONDICION: las direcciones "dirPrincipal" y "dirSecundaria" no son iguales ni opuestas.
+        PARAMETROS: ambos parámetros son tipo Direccion que representan las direcciones a ubicar el cabezal.
+    */
+    IrAlBorde(dirPrincipal)
+    IrAlBorde(dirSecundaria)
+}
+
+function esFinalDeUnRecorridoAl_Y_(dirPrincipal, dirSecundaria) {
+    /*
+        PROPOSITO: indica si el cabezal se encuentra al final de un recorrido en las direcciones "dirPrincipal" y 
+        "dirSecundaria"
+        PRECONDICION: las direcciones "dirPrincipal" y "dirSecundaria" no son iguales ni opuestas.
+        PARAMETROS: ambos parámetros son tipo Direccion y representan las direcciones del final de un recorrido.
+        TIPO: Booleano
+    */
+    return (not puedeMover(dirPrincipal) && not puedeMover(dirSecundaria))
+}
+
+procedure PasarASiguienteCeldaAl_Y_(dirPrincipal, dirSecundaria) {
+    /*
+        PROPOSITO: ubicar el cabezal en la siguiente celda dadas por las direcciones "dirPrincipal" y "dirSecundaria"
+        PRECONDICION: *hay al menos una celda en la direccion "dirSecundaria" de la celda actual.
+                      *las direcciones "dirPrincipal" y "dirSecundaria" no son iguales ni opuestas.
+        PARAMETROS: ambos parámetros son tipo Direccion y representan la direccion de la siguiente celda a mover
+    */
+    if (puedeMover(dirPrincipal)) {
+        Mover(dirPrincipal)
+    } else {
+        IrAlBorde(opuesto(dirPrincipal))
+        Mover(dirSecundaria)
+    }
+}

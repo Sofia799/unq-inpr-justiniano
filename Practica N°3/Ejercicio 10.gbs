@@ -1,0 +1,64 @@
+program {
+    DibujarCuadrado_DeLado(Rojo, 3)
+}
+
+// 10
+procedure DibujarCuadrado_DeLado(color, longitud) {
+    /* PROPÓSITO: Dibujar un cuadrado de lado "longitud" de color **color** en la 
+                esquina SurOeste.
+    PRECONDICIONES: * el tablero es de al menos 2x2.
+                    * Hay al menos ("longitud"-1) celdas al Norte y ("longitud"-1)
+                    celdas al Este de la actual.
+                    * todas las celdas contenidas en el cuadrado de 
+                    "longitud"x"longitud" desde la celda actual hacia el Norte
+                    y hacia el Este están vacías.
+    PARÁMETROS: *color: es un Color que describe el color del 
+                cuadrado a dibujar
+                *longitud es un Número que describe la longitud de lado del
+                cuadrado a dibujar.
+    */
+    
+    
+    DibujarLínea_DeLongitud_Hacia(color, longitud, Este)
+    Mover(Norte)
+    DibujarLínea_DeLongitud_Hacia(color, longitud, Oeste)
+    Mover(Sur)
+}
+procedure DibujarLínea_DeLongitud_Hacia(colorLinea, longitud, direccion) {
+    /* PROPÓSITO: Dibujar una línea de color "colorLinea" de longitud "longitud"
+                hacia la direccion "direccion" de la celda actual.
+    PRECONDICIONES: * hay al menos "longitud" celdas hacia la direccion
+                    "direccion" de la celda actual.
+    PARAMETROS: *colorLinea es un Color que describe el color de la linea a 
+                dibujar.
+                *longitud es un Numero que describe la longitud de lado del
+                cuadrado a dibujar.
+                *direccion es una Direccion que describe la direccion a mover
+                el cabezal
+    */
+    repeat(longitud - 1) {
+        Poner(colorLinea) 
+        Mover(direccion)
+    }
+     Poner(colorLinea) 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

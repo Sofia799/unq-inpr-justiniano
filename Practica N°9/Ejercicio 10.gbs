@@ -1,0 +1,12 @@
+type BoletoDeColectivo is record {
+    /*
+        PROPOSITO: modelar un boleto de colectivo
+        INV.REP: *nroTramos esta entre 1 y 4
+                 *nroBoleto tiene 5 digitos
+    */
+    field nroLinea  // Numero
+    field nroTramos // Numero
+    field serie     // String
+    field nroBoleto // [Numero]
+    // [1,0,3,0,1]
+}

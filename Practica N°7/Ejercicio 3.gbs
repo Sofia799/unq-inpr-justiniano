@@ -1,0 +1,11 @@
+function  hayBolitas_Al_(color, direccion) {
+    /*
+        PROPOSITO: indica si hay una celda en la direccion "direccion" y si hay bolitas del color "color" en dicha
+                    direccion
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color que representa el color de las bolitas
+                    "direccion es una Direccion que representa la direccion de la celda"
+        TIPO: Booleano
+    */
+    return (puedeMover(direccion) && tieneBolitas_Al_(color, direccion))
+} 

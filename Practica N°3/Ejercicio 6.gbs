@@ -1,0 +1,24 @@
+procedure Pintar3PuntosAzules() {
+    /*
+        PROPOSITO: Poner 3 puntos azules cada 3 celdas de distancia en direccion al Este.
+        PRECONDICION: hay al menos 6 celdas hacia el Este de la celda actual.
+    */
+    Poner(Azul)
+    Poner_ADistancia3Al_(Azul, Este)
+    Poner_ADistancia3Al_(Azul, Este)
+    Mover_3Veces(Oeste) 
+    Mover_3Veces(Oeste)
+}
+
+procedure Pintar3Puntos_(color) {
+    /*
+        PROPOSITO: Poner 3 puntos del color "color" cada 3 celdas de distancia en direccion al Este.
+        PRECONDICION: hay al menos 6 celdas hacia el Este de la celda actual.
+        PARAMETROS: color es un Color que representa el color de los puntos a poner.
+    */
+    Poner(color)
+    Poner_ADistancia3Al_(color, Este)
+    Poner_ADistancia3Al_(color, Este)
+    Mover_3Veces(Oeste) 
+    Mover_3Veces(Oeste)
+}

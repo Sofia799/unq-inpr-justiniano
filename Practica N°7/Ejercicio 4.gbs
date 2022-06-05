@@ -1,0 +1,25 @@
+function máximoEntre_Y_(valor1, valor2) {
+    /*
+        PROPOSITO: describe el valor máximo entre los valores "valor1" y "valor2"
+        PRECONDICION: ninguna
+        PARAMETROS: ambos valores son de tipo Número
+        TIPO: Número
+    */
+    return (choose
+        valor1 when (valor1 > valor2)
+        valor2 otherwise
+    )
+}
+
+function mínimoEntre_Y_(valor1,valor2) {
+    /*
+        PROPOSITO: describe el valor mínimo entre los valores "valor1" y "valor2"
+        PRECONDICION: ninguna
+        PARAMETROS: ambos valores son de tipo Número
+        TIPO: Número
+    */
+    return (choose
+        valor1 when (valor1 < valor2)
+        valor2 otherwise
+    )
+}

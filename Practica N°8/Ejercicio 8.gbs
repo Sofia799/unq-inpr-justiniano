@@ -1,0 +1,16 @@
+function siguienteDíaDelMes__(dia,mes) {
+    /*
+        PROPOSITO: dados "dia" y "mes",describe el dia siguiente de dicho mes.
+        PRECONDICION: "dia" es un dia válido de un mes. (Del 1 al 30 o 31)
+        PARAMETROS: "dia"es un Numero
+                     "mes" es un Mes
+        Tipo Numero
+    */
+    return (choose  1 when (mes == mesAnterior(mes))
+                    siguiente(dia) otherwise)
+}
+
+function mesAnterior(mes) {
+    /*--*/
+    
+}

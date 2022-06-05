@@ -1,0 +1,168 @@
+
+procedure Mover_MercaderíasDelLocal_AlLocal_(cantidad, origen, destino) {
+    /*
+        PROPOSITO: mover la cantidad "cantidad" de mercadería del depósito local que está en dirección "origen"
+                    al que está en dirección "destino".
+        PRECONDICION: el cabezal se encuentra ubicado en el depósito central.
+        PARAMETROS: "cantidad" es un Número que representa la cantidad de mercaderia a mover
+                    "origen" es una Direccion que representa la direccion del deposito local origen
+                    "destino" es una Direccion que representa la direccion del deposito local destino
+    */
+    Traer_MercaderíasDelLocal_(cantidad, origen)
+    Llevar_MercaderíasAlLocal_(cantidad, destino)
+}
+
+procedure Llevar_MercaderíasAlLocal_(cantidad, direccion) {
+    /*
+        PROPOSITO: llevar la cantidad "cantidad" de mercaderías al depósito local ubicado en la direccion
+                    "direccion"
+        PRECONDICION: el cabezal se encuentra sobre el depósito central
+        PARAMETROS: "cantidad" es un Número que representa la cantidad de mercaderia a llevar
+                    "direccion" es una Direccion que representa la direccion del depósito local a llevar la mercaderia
+    */
+    if (cantidadMercaderia() >= cantidad) {
+        Sacar_Mercaderia(cantidad)
+        IrDeCentralAlLocal_(direccion)
+        Poner_Mercaderia(cantidad)
+        IrDelLocal_ACentral(direccion)
+    }
+}
+
+procedure Traer_MercaderíasDelLocal_(cantidad, direccion) {
+    /*
+        PROPOSITO: lleva la cantidad "cantidad" de mercaderias del depósito local en la direccion "direccion" hacia
+                    depósito central.
+        PRECONDICION: el cabezal se encuentra sobre el depósito central 
+        PARAMETROS: "cantidad" es un Número que representa la cantidad de mercaderia a llevar
+                    "direccion" es una Direccion que representa la direccion del depósito local
+    */
+    IrDeCentralAlLocal_(direccion)
+    if (cantidadMercaderia() >= cantidad) {
+        Sacar_Mercaderia(cantidad)
+        IrDelLocal_ACentral(direccion)
+        Poner_Mercaderia(cantidad)
+    } else {
+        IrDelLocal_ACentral(direccion)
+    }
+}
+
+procedure Sacar_Mercaderia(cantidad) {
+    /*
+        PROPOSITO: sacar la cantidad "cantidad" de mercaderia de la celda actual
+        PRECONDICION: hay al menos la cantidad "cantidad" de mercaderia en la celda actual
+        PARAMETROS: "cantidad" es un Número que representa la cantidad de mercaderia a sacar
+        OBSERVACION: mercaderia se representa con bolitas azules
+    */
+    Sacar__Veces(Azul, cantidad)
+}
+
+// 8A
+procedure Mover__Veces(direccion, cantidad) {
+    /*
+        PROPOSITO: mover el cabezal un número de veces indicado por "cantidad" hacia la direccion "direccion".
+        PRECONDICION: Hay al menos un número de "cantidad" de celdas hacia la direccion "direccion" de la celda actual.
+        PARAMETROS: *direccion es una Direccion que representa la direccion a mover el cabezal.
+                    *cantidad es un Número que representa el número de veces a mover el cabezal.
+    */
+        repeat(cantidad) {
+            Mover(direccion)
+        }
+}
+
+// 8B
+/*
+b. ¿Es posible hacer este procedimiento sin usar repetición simple? ¿Por qué?
+No es posible porque el parametro cantidad puede ser cualquier numero, y si o si deberia moverme una x cantidad de
+veces hacia una direccion.
+*/
+
+// 8C
+procedure Poner__Veces(color, cantidad) {
+    /*
+        PROPOSITO: Poner el número de "cantidad" de bolitas del color "color" en la celda actual.
+        PRECONDICION: ninguna
+        PARAMETROS: *color es un Color que representa el color de las bolitas a poner
+                    *cantidad es un Número que representa el número de bolitas a poner
+    */
+    repeat(cantidad) {
+        Poner(color)
+    }
+}
+
+procedure Sacar__Veces(color, cantidad) {
+    /*
+        PROPOSITO: sacar el numero "cantidad" de bolitas del color "color" de la celda actual.
+        PRECONDICION: Hay al menos una "cantidad" de bolitas del color "color" en la celda actual.
+        PARAMETROS: *color es un Color que representa el color de las bolitas a sacar.
+                    *cantidad es un Número que representa el número de bolitas a sacar
+    */
+    repeat(cantidad) {
+        Sacar(color)
+    }
+}
+
+procedure Poner_Mercaderia(cantidad) {
+    /*
+        PROPOSITO: poner la cantidad "cantidad" de mercaderia de la celda actual
+        PRECONDICION: ninguna
+        PARAMETROS: "cantidad" es un Número que representa la cantidad de mercaderia a poner
+        OBSERVACION: mercaderia se representa con bolitas azules
+    */
+    Poner__Veces(Azul, cantidad)
+}
+
+function cantidadMercaderia() {
+    /*
+        PROPOSITO: describe la cantidad de mercaderia de la celda actual
+        PRECONDICION: ninguna
+        TIPO: Número
+        OBSERVACION: mercaderia se representa con bolitas azules
+    */
+    return (nroBolitas(Azul))
+}
+
+procedure IrDeCentralAlLocal_(direccion) {
+    /*
+        PROPOSITO: ubicar el cabezal del depósito central al depósito local en la direccion "direccion" dejando el
+                    cabezal en la celda de dicho depósito.
+        PRECONDICION: el cabezal se encuentra en el depósito central.
+        PARAMETROS: "direccion" es una Direccion que se representa la direccion a mover el cabezal hacia el deposito local 
+    */
+    while (puedeMover(direccion) && not esDepósitoLocal()) {
+        Mover(direccion)
+
+    }
+}
+
+procedure IrDelLocal_ACentral(direccion) {
+    /*
+        PROPOSITO: ubicar el cabezal del depósito local al depósito central en la direccion "direccion" dejando el
+                    cabezal en la celda de dicho depósito.
+        PRECONDICION: el cabezal se encuentra en un depósito local.
+        PARAMETROS:"direccion" es una Direccion que representa la direccion a mover el cabezal hacia el depósito central
+    */
+    while (puedeMover(opuesto(direccion)) && not esDepósitoCentral()) {
+        Mover(opuesto(direccion))
+    }
+}
+
+function esDepósitoLocal() {
+    /*
+        PROPOSITO: indica si el cabezal esta sobre un depósito local.
+        PRECONDICION: ninguna
+        TIPO: Booleano
+        OBSERVACION: un depósito local se representa con 2 bolitas negras
+    */
+    return (nroBolitas(Negro) == 2)
+}
+
+
+function esDepósitoCentral() {
+    /*
+        PROPOSITO: indica si el cabezal esta sobre un depósito central.
+        PRECONDICION: ninguna
+        TIPO: Booleano
+        OBSERVACION: un depósito central se representa con 3 bolitas negras
+    */
+    return (nroBolitas(Negro) == 3)
+}

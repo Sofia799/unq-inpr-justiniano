@@ -1,0 +1,26 @@
+type Fecha is record {
+    /*
+    PROPOSITO: modelar una fecha de calendario
+    INV.REP: *día esta entre 1 y 30 o 31
+             *año debe ser un número de 4 dígitos válido a un año
+    */
+    field dia   //Numero
+    field mes   //Mes
+    field año   //Numero
+}
+
+type Mes is variant {
+    // PROPOSITO:modelar un mes
+    case Enero {}
+    case Febrero {}
+    case Marzo {}
+    case Abril {}
+    case Mayo {}
+    case Junio {}
+    case Julio {}
+    case Agosto {}
+    case Septiembre {}
+    case Octubre {}
+    case Noviembre {}
+    case Diciembre {}
+}

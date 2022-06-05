@@ -1,0 +1,13 @@
+function longitudDe_(lista) {
+    /*
+        PROPOSITO: describe la longitud de la lista "lista"
+        PRECONDICION: ninguna
+        PARAMETROS: "lista" es una Lista de Elementos
+        TIPO: Numero
+    */
+    longitud := 0
+    foreach elemento in lista {
+        longitud := longitud + 1
+    }
+    return (longitud)
+}

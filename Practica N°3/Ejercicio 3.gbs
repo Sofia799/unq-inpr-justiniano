@@ -1,0 +1,24 @@
+procedure Poner_ADistancia3Al_(color, dirección) {
+    /*
+        PROPOSITO: Poner una bolita del color "color" a 3 celdas de distancia en la direccion "direccion". 
+        El cabezal termina en la celda a distancia 3 de la celda actual en la direccion "direccion".
+        PRECONDICION: Hay al menos 3 celdas hacia la direccion "direccion".
+        PARAMETROS: *color es un Color que representa el color de la bolita a poner.
+                    *direccion es una Direccion que representa la direccion a mover el cabezal.
+    */
+    Mover_3Veces(dirección) 
+    Poner(color) 
+    
+}
+
+procedure Mover_3Veces(direccionAMover) {
+    /*
+        PROPOSITO: Mover el cabezal 3 posiciones hacia la direccion "direccionAMover".
+        PRECONDICION: Hay al menos 3 celdas hacia la direccion "direccionAMover" desde la celda actual.
+        PARAMETROS: direccionAMover es una Direccion que representa la direccion a mover el cabezal.
+    */
+    repeat (3) {
+        Mover(direccionAMover)
+    }
+}
+

@@ -1,0 +1,102 @@
+procedure Poner_Semillas(cantidadDeSemillasAPoner) {
+    /*
+        PROPOSITO: poner el número "cantidadDeSemillasAPoner" de semillas en la parcela actual
+        PRECONDICION: ninguna
+        PARÁMETROS: cantidadDeSemillasAPoner es un Número que representa el número de semillas a poner
+        OBSERVACION: las semillas se representan con bolitas rojas
+    */
+    Poner__Veces(Rojo, cantidadDeSemillasAPoner)
+}
+
+procedure Sacar_Semillas(cantidadDeSemillasASacar) {
+    /*
+        PROPOSITO: sacar el número "cantidadDeSemillasASacar" de semillas en la parcela actual.
+        PRECONDICION: hay al menos "cantidadDeSemillasASacar" de semillas en la parcela actual.
+        PARAMETROS: "cantidadDeSemillasASacar" es un Número que representa la cantidad de semillas a sacar
+        OBSERVACION: las semillas se representan con bolitas rojas.
+    */
+    Sacar__Veces(Rojo, cantidadDeSemillasASacar)
+}
+
+procedure Poner_Arboles(cantidadDeÁrbolesAPoner) {
+    /*
+        PROPOSITO: poner el número "cantidadDeÁrbolesAPoner" de árboles en la parcela actual
+        PRECONDICION: ninguna
+        PARÁMETROS: cantidadDeÁrbolesAPoner es un Número que representa el número de árboles a poner
+        OBSERVACION: los árboles se representan con bolitas verdes
+    */
+    Poner__Veces(Verde, cantidadDeÁrbolesAPoner)
+}
+
+procedure Sacar_Árboles(cantidadDeÁrbolesASacar) {
+    /*
+        PROPOSITO: sacar el número "cantidadDeÁrbolesASacar" de árboles en la parcela actual.
+        PRECONDICION: hay al menos "cantidadDeÁrbolesASacar" de árboles en la parcela actual.
+        PARAMETROS: "cantidadDeÁrbolesASacar" es un Número que representa la cantidad de árboles a sacar
+        OBSERVACION: los árboles se representan con bolitas verdes
+    */
+    Sacar__Veces(Verde, cantidadDeÁrbolesASacar)
+}
+
+procedure PonerBomba() {
+    /*
+        PROPOSITO: poner una bomba en la parcela actual.
+        PRECONDICION: ninguna
+        OBSERVACION: una bomba se representa con un bolita negra
+    */
+    Poner(Negro)
+}
+
+procedure SacarBomba() {
+    /*
+        PROPOSITO: sacar una bomba en la parcela actual.
+        PRECONDICION: hay al menos una bomba en la parcela actual.
+        OBSERVACION: una bomba se representa con un bolita negra
+    */
+    Sacar(Negro)
+}
+
+procedure  Poner_Nutrientes(cantidadDeNutrientesAPoner) {
+    /*
+        PROPOSITO: poner el número "cantidadDeNutrientesAPoner" de unidad de nutrientes en la parcela actual
+        PRECONDICION: ninguna
+        PARÁMETROS: cantidadDeNutrientesAPoner es un Número que representa el número de unidad de nutrientes a poner
+        OBSERVACION: la unidad de nutriente se representan con bolitas azules.
+    */
+    Poner__Veces(Azul, cantidadDeNutrientesAPoner)
+}
+
+procedure Sacar_Nutrientes(cantidadDeNutrientesASacar) {
+    /*
+        PROPOSITO: sacar el número "cantidadDeNutrientesASacar" de unidad de nutrientes de la parcela actual.
+        PRECONDICION: hay al menos "cantidadDeNutrientesASacar" de unidad de nutrientes en la parcela actual.
+        PARAMETROS: "cantidadDeNutrientesASacar" es un Número que representa la cantidad de unidad de nutrientes a sacar
+        OBSERVACION: la unidad de nutriente se representan con bolitas azules.
+    */
+    Sacar__Veces(Azul, cantidadDeNutrientesASacar)
+}
+
+procedure Poner_SemillasAl_(cantidad, direccion) {
+    /*
+        PROPOSITO: Poner el número "cantidad" de semillas en la parcela lindante hacia la direccion "direccion".
+        PRECONDICION: hay al menos una parcela hacia la direccion "direccion" de la parcela actual.
+        PARAMETROS: *cantidad es un Número que representa la cantidad de semillas a poner
+                    *direccion es una Direccion que representa la direccion hacia donde moverse
+    */
+    Mover(direccion)
+    Poner_Semillas(cantidad)
+    Mover(opuesto(direccion))
+}
+
+procedure Sacar_ÁrbolesAl_(cantidad, dirección) {
+    /*
+        PROPOSITO: sacar la cantidad "cantidad" de árboles en la parcela lindante hacia la direccion "direccion"
+        PRECONDICION: *hay al menos una parcela hacia la direccion "direccion" de la parcela actual.
+                      *hay al menos la cantidad "cantidad" de árboles en la parcela lindante hacia la direccion "direccion"
+        PARAMETROS: *cantidad es un Número que representa la cantidad de árboles a sacar.
+                    *direccion es una Direccion que representa la direccion hacia donde moverse
+    */
+    Mover(direccion)
+    Sacar_Árboles(cantidad)
+    Mover(opuesto(direccion))
+}

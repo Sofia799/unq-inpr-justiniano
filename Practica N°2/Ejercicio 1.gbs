@@ -1,0 +1,86 @@
+program {
+    UbicarAlInicio()
+    DibujarInicialSVerde()
+    DibujarInicialJ()
+    UbicarAlInicio()
+}
+
+procedure DibujarInicialJ() {
+    /*
+        PROPÓSITO: DIbujar la letra inicial J y dejar el cabezal en la ultima posicion.
+        PRECONDICIONES: Hay al menos 4 celdas al norte de la celda actual y hay al menos
+                        3 celdas al este de la celda actual
+    */
+    
+}
+
+procedure UbicarAlInicio() {
+    /*
+        PROPÓSITO: Ubica el cabezal al inicio del tablero
+        PRECONDICIONES: Ninguna
+            * ....
+    */
+    IrAlBorde(Oeste)
+    IrAlBorde(Sur)
+}
+
+procedure DibujarInicialSVerde() {
+    /*
+        PROPÓSITO: Dibujar la letra inicial S y dejar el cabezal en la posición necesaria para escribir
+                    la siguiente inicial.
+        PRECONDICIONES: *Hay al menos 4 celdas al norte de la celda actual
+                        * Hay al menos 3 celdas al este de la celda actual
+    */
+    DibujarLineaVerdeAlEste()
+    DibujarLineaVerdeAlNorte()
+    DibujarLineaVerdeAlOeste()
+    DibujarLineaVerdeAlNorte()
+    DibujarLineaVerdeAlEste()
+    PasarASiguienteInicial()
+}
+
+procedure DibujarLineaVerdeAlEste() {
+    /*
+        PROPÓSITO: Dibuja una línea verde al este de tamaño 2 dejando el cabezal en la última celda sin pintar.
+        PRECONDICIONES: Hay al menos 2 celdas al este de la celda actual.
+    */
+    Poner(Verde)
+    Mover(Este)
+    Poner(Verde)
+    Mover(Este)
+}
+
+procedure DibujarLineaVerdeAlNorte() {
+     /*
+        PROPÓSITO: Dibuja una línea verde al norte de tamaño 2 dejando el cabezal en la última celda sin pintar.
+        PRECONDICIONES: Hay al menos 2 celdas al norte de la celda actual.
+    */
+    Poner(Verde)
+    Mover(Norte)
+    Poner(Verde)
+    Mover(Norte)
+}
+
+procedure DibujarLineaVerdeAlOeste() {
+     /*
+        PROPÓSITO: Dibuja una línea verde al oeste de tamaño 2 dejando el cabezal en la última celda sin pintar.
+        PRECONDICIONES: Hay al menos 2 celdas al oeste de la celda actual.
+    */
+    Poner(Verde)
+    Mover(Oeste)
+    Poner(Verde)
+    Mover(Oeste)
+}
+
+procedure PasarASiguienteInicial() {
+    /*
+        PROPÓSITO: ubicar el cabezal en la posicion de la siguiente inicial a dibujar.
+        PRECONDICIONES: Hay al menos 4 celdas al Sur y al menos 2 al este
+    */
+    Mover(Sur)
+    Mover(Sur)
+    Mover(Sur)
+    Mover(Sur)
+    Mover(Este)
+    Mover(Este)
+}

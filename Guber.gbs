@@ -1,0 +1,69 @@
+procedure RecogerSolicitanteConId_(id) {
+    /*
+        PROPOSITO: Recoger a un solicitante con el id "id" en la ubicacion
+                    actual y subirlo al vehículo.
+        PRECONDICIONEs: *el tablero reprsenta un mapa válido de Guber
+                        *hay un solicitante con el id "id" en la ubicacion
+                        actual
+                        *el vehículo está vacío
+                        *el vehículo está en la ubicacion actual.
+        PARAMETROS: *id es un Numero que representa el ID del solicitante a 
+                    recoger.
+    */
+    RecogerSolicitante_(id)
+    SubirPasajero_(id)
+    PonerVehiculoOcupado()
+}
+
+procedure RecogerSolicitante(id) {
+    /*
+        PROPOSITO: recoger a un solicitante con el id "id" en la ubicacion
+                    actual.
+        PRECONDICIONES: el solicitante con el id "id" está en la ubicacion
+                        actual.
+        PARAMETROS: id es un Numero que representa el id del solicitante a
+                    recoger-
+        OBSERVACION: *un solicitante se representa con el nro de bolitas 
+                    azules como indica el id "id".
+    */
+    Sacar__Veces(Azul, id)
+}
+
+
+procedure SubirPasajero_(id) {
+    /*
+        PROPOSITO: subir a un pasajero con el id "id" al vehículo.
+        PRECONDICION: *el vehículo esta vacio
+                      *hay un vehículo en la ubicacion actual
+                      *no hay un solicitante en la ubicacion actual
+        PARAMETROS: id es un Número que representa el ID del pasajero
+        OBSERVACION: un pasajero se representa con el nro de bolitas
+                    verdes como indica el id "id"
+    */
+    Poner__Veces(Verde, id)
+}
+
+procedure PonerVehiculoOcupado() {
+    /*
+        PROPOSITO: poner al vehiculo como ocupado en la ubicacion actual
+        PRECONDICION: *hay un vehículo en la ubicacion actual
+                      *en el vehículo hay un pasajero
+        OBSERVACION: *un vehículo se representa con 1 bolita negras
+                     *un vehículo ocupado se representa con 2 bolitas negras
+    */
+    Poner(Negro)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

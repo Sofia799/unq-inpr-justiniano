@@ -1,0 +1,17 @@
+function coordenadaX() {
+    /*
+        PROPOSITO: describe la coordenada x de la celda actual.
+        PRECONDICION: ninguna
+        TIPO: Número
+    */
+    return (distanciaAlBorde_(Oeste))
+}
+
+function coordenadaY() {
+    /*
+        PROPOSITO: describe la coordenada y de la celda actual.
+        PRECONDICION: ninguna
+        TIPO: Número
+    */
+    return (distanciaAlBorde_(Sur))
+}

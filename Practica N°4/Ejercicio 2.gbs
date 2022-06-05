@@ -1,0 +1,13 @@
+procedure Mover_SegúnColor_(direccion, color) {
+    /*
+        PROPOSITO: mover el cabezal hacia la direccion "direccion" el número de celdas como bolitas de color
+        "color" haya en la celda actual.
+        PRECONDICION: hay al menos el número de celdas como bolitas de color "color" haya en la celda actual hacia
+        la direccion "direccion".
+        PARAMETROS: *direccion es una Direccion que representa la direccion a mover el cabezal.
+                    *color es un Color que representa el color de las bolitas.
+    */
+    repeat (nroBolitas(color)) {
+        Mover(direccion)
+    }
+}

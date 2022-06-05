@@ -1,0 +1,94 @@
+// 9a
+function manoDe3CartasDe_(mazo) {
+    /*
+        PROPOSITO: describe una mano de 3 cartas del mazo "mazo"
+        PRECONDICION: "mazo" tiene al menos 3 cartas
+        PARAMETROS_: "mazo" es una Lista de tipo Carta
+        TIPO: Lista de tipo Carta
+    */
+    return ([primero(mazo)] ++ [segundo_(mazo)] ++ [tercero_(mazo)])
+}
+
+// 9b
+function tieneEnvido_(mano) {
+    /*
+        PROPOSITO:indica si la mano "mano" tiene envido.
+        PRECONDICION: "mano" tiene 3 cartas
+        PARAMETROS: "mano" es una Lista de tipo Carta
+        TIPO: Booleano
+        OBSERVACION: la mano tiene envido si hay exactamente 2 cartas con el mismo palo
+    */
+    return (paloDe_(primero(mano)) == paloDe_(segundo_(mano))
+           || 
+           paloDe_(primero(mano)) == paloDe_(tercero_(mano))
+           ||
+           paloDe_(segundo_(mano)) == paloDe_(tercero_(mano))
+        )
+}
+
+function paloDe_(carta) {
+    /*
+        PROPOSITO: describe el palo de la carta "carta"
+        PRECONDICION: ninguna
+        PARAMETROS: "carta" es una Carta
+        TIPO:Palo
+    */
+    return (palo(carta))
+}
+
+// 9c
+function tieneFlor_(mano) {
+    /*
+        PROPOSITO:indica si la mano "mano" tiene flor.
+        PRECONDICION: "mano" tiene 3 cartas
+        PARAMETROS: "mano" es una Lista de tipo Carta
+        TIPO: Booleano
+        OBSERVACION: la mano tiene flor si las 3 cartas con el mismo palo
+    */
+    return (paloDe_(primero(mano)) == paloDe_(segundo_(mano)) 
+            &&
+            paloDe_(primero(mano)) == paloDe_(tercero_(mano)) 
+        )
+}
+
+// 9d
+function cuántoDeFlor_(mano) {
+    /*
+        PROPOSITO: describe el valor de la flor (en caso de que tenga) de la mano "mano". describe 0 en caso contrario
+        PRECONDICION: "mano" tiene 3 cartas
+        PARAMETROS: "mano" es una Lista de tipo Carta
+        TIPO: Numero
+    */
+    return (choose 30 + 
+                   valorDeCarta_(primero(mano)) +
+                   valorDeCarta_(segundo(mano)) +
+                   valorDeCarta_(tercero_(mano)) when (tieneFlor_(mano))
+                   0 otherwise)
+}
+
+function valorDeCarta_(carta) {
+    /*
+        PROPOSITO: describe el valor de la carta "carta"
+        PRECONDICION: ninguna
+        PARAMETROS: "carta" es una Carta
+        TIPO: Numero
+    */
+    return (choose 0 when (esFigura_(carta))
+                   numero(carta) otherwise)
+}
+
+function esFigura_(carta) {
+    /*--*/
+    return (numero(carta) == 10 || numero(carta) == 11 || numero(carta) == 12)
+}
+
+// 9e
+function cuántoDeEnvido_(mano) {
+    /*
+        PROPOSITO: describe el valor del envido de la mano "mano"
+        PRECONDICION: "mano" tiene 3 carta
+        PARAMETROS: "mano" es una Lista de tipo Carta
+        TIPO: Numero
+    */
+    return (choose 20 + )
+}

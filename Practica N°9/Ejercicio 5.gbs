@@ -1,0 +1,9 @@
+function esSingular_(lista) {
+    /*
+        PROPOSITO: indica si la lista "lista" tiene un solo elemento
+        PRECONDICION: ninguna
+        PARAMETROS:"lista" es una lista de cualquier tipo
+        TIPO: Booleano
+    */
+    return (not esVacía(lista) && esVacía(resto(lista)))
+}

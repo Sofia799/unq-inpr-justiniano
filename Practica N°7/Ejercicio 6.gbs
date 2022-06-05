@@ -1,0 +1,31 @@
+function nroFilas() {
+    /*
+        PROPOSITO: Describe la cantidad de filas del tablero
+        PRECONDICION: ninguna
+        TIPO: Número
+    */
+    IrAlBorde(Oeste)
+    IrAlBorde(Sur)
+    nroFilas:= 0
+    while (puedeMover(Norte)) {
+        nroFilas := nroFilas + 1
+        Mover(Norte)
+    }
+    return (nroFilas + 1)
+}
+
+function nroColumnas() {
+    /*
+        PROPOSITO: describe la cantidad de columnas del tablero
+        PRECONDICION: ninguna
+        TIPO:Número
+    */
+    IrAlBorde(Sur)
+    IrAlBorde(Oeste)
+    nroColumnas:=0
+    while (puedeMover(Este)) {
+        nroColumnas := nroColumnas + 1
+        Mover(Este)
+    }
+    return (nroColumnas + 1)
+}

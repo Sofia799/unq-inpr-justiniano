@@ -1,0 +1,111 @@
+program {
+    DibujarBanda_EnDiagonalNEDe_x_(Negro,1,2)
+}
+
+procedure DibujarBanda_EnDiagonalNEDe_x_(color, alto, largo){
+    /*
+        PROPOSITO: dibujar una banda de color "color" en diagonal 
+                   hacia el NorEste con un ancho de "largo" y un alto de "alto",
+                   el cabezal con inicio en la esquina suroeste.
+        PRECONDICION: *hay al menos ("largo" -1) celdas al NorEste de la celda actual.
+                      *la celda actual esta vacia.
+                      *"largo" es mayor a 1
+                      *las ("largo" - 1) celdas al NorEste de la actual estan vacías.
+                      *las ("alto" - 1) celdas al NorEste de la actual estan vacías.
+                      *para las primeras ("largo" - 1) celdas al NorEste de la actual, 
+                      las ("alto" - 1) celdas al Norte están vacías
+        PARAMETROS: *color es un Color que representa el color de a banda a 
+                    dibujar.
+                    *alto es un Número que representa el alto de la banda a 
+                    dibujar
+                    *largo es un Número que representa el ancho de la banda a
+                    dibujar.
+    */
+    repeat(alto) {
+        DibujarDiagonal_DeLargo_(color, largo)
+        IrASiguienteDiagonal_(Norte)
+    }
+    UbicarEnInicioBanda()
+}
+
+procedure UbicarEnInicioBanda() {
+    /*
+        PROPOSITO: ubicar el cabezal al iinicio de una banda en diagonal.
+        PRECONDICION: ninguna
+    */
+    IrAlBorde(Oeste)
+    IrAlBorde(Sur)
+}
+
+procedure IrASiguienteDiagonal_(direccion) {
+    /*
+        PROPOSITO: ubicar al cabezal en la sig diagonal a dibujar
+        hacia la direccion "direccion" .
+        PRECONDICION: hay al menos una celda hacia la direccion "direccion"
+        de la celda actual
+        PARAMETROS: direccion es una Direccion que representa la direccion
+        a mover el cabezal
+    */
+    Mover(direccion)
+}
+
+procedure DibujarDiagonal_DeLargo_(color, largo) {
+    /*
+        PROPOSITO: dibujar una diagonal de color "color" hacia el noroeste de
+                    largo "largo".
+        PRECONDICION: Hay al menos 4 celdas hacia el Este de la celda actual
+        PARAMETROS: color es un Color que representa el color de la diagonal
+                    largo es un Número que representa el largo de la diagonal
+    */
+    repeat(largo - 1) {
+        PonerEscalon_(color)
+        MoverASigEscalon(Este,Norte)
+    }
+    PonerEscalon_(color)
+    Mover__Veces(Sur, largo - 1)
+    Mover__Veces(Oeste, largo - 1)
+    
+}
+
+procedure MoverASigEscalon(direccion1, direccion2) {
+    /*
+        PROPOSITO: ubicar el cabezal en el siguiente escalon en la
+        direccion "direccion1" y la direccion "direccion2"
+        PRECONDICION: hay al menos una celda hacia la direccion "direccion1" de
+        la celda actual y hay al menos una celda hacia la direccion "direccion2"
+        de la celda actuall.
+        PARAMETROS: ambos parámetros son de tipo Direccion que representan la
+        direccion a mover el cabezal
+    */
+    Mover(direccion1)
+    Mover(direccion2)
+}
+
+procedure PonerEscalon_(color) {
+    /*
+        PROPOSITO: poner un escalon del color "color" en la celda actual.
+        PRECONDICION: ninguna
+        PARAMETROS: color es un Color que representa el color de un escalon
+    */
+    Poner(color)
+}
+
+procedure Mover__Veces(direccion, cantidad) {
+    /*
+        PROPOSITO: mover el cabezal un número de veces indicado por "cantidad" hacia la direccion "direccion".
+        PRECONDICION: Hay al menos un número de "cantidad" de celdas hacia la direccion "direccion" de la celda actual.
+        PARAMETROS: *direccion es una Direccion que representa la direccion a mover el cabezal.
+                    *cantidad es un Número que representa el número de veces a mover el cabezal.
+    */
+        repeat(cantidad) {
+            Mover(direccion)
+        }
+}
+
+
+
+
+
+
+
+

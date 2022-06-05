@@ -1,0 +1,205 @@
+procedure  Mover__Veces(dirección, cantidad){ //EJERCICIO 8 TP 3
+    /*
+        PROPÓSITO=
+            *Ubicar el cabezal la cantidad dada de la celda actual hacía la 
+            dirección "dirección".
+        PARÁMETROS=
+            *"dirección", indica la dirección a moverse.
+            *"cantidad", indica la cantidad de veces que se tiene que mover hacía
+             la dirección dada.
+        PRECONDICIÓN=
+            *Hay, al menos, "cantidad" de celdas haciá la dirección "dirección" de 
+             la celda actual.
+    */
+    repeat(cantidad){
+        Mover(dirección)
+    }
+}
+
+procedure Poner__Veces(color, cantidad){ //TP 3 EJ8
+    /*
+        PROPÓSITO=
+            *Colocar en la celda actual el color "color" la cantidad de veces dada.
+        PARÁMETROS=
+            *"color" indica el color a poner.
+            *"cantidad", indica la cantidad dada a poner el color dado en la
+             celda actual.
+        PRECONDICIÓN=
+            *Ninguna.
+    */
+    repeat(cantidad){
+        Poner(color)
+    }
+}
+
+procedure Sacar__Veces(color, cantidad){ //TP 3 EJ8
+    /*
+        PROPÓSITO=
+            *Quitar en la celda actual el color "color" la cantidad de veces dada.
+        PARÁMETROS=
+            *"color" indica el color a Sacar.
+            *"cantidad", indica la cantidad dada a Sacar el color dado en la
+             celda actual.
+        PRECONDICIÓN=
+            *hay, al menos, "cantidad" de bolitas "color" en la celda actual.
+    */
+    repeat(cantidad){
+        Sacar(color)
+    }
+}
+
+procedure SacarTodas_(colorASacar){ //TP4 EJERCICIO 6
+    /*
+        PROPÓSITO=
+            *Quitar todas las bolitas del color dado.
+        PARÁMETRO=
+            *"colorASacar", Color - indica el color a sacar.
+        PRECONDICIÓN=
+            *Ninguna.
+    */
+    Sacar__Veces(colorASacar, nroBolitas(colorASacar))
+}
+
+procedure  Poner_Si_(color, condición){ //TP5 EJ5A
+    /*
+        PROPÓSITO=
+            *Colocar el color "color" en la celda actual, siempre y cuando se cumpla la condición dada.
+        PARÁMETRO=
+            *"color", Color - indica el color a poner.
+            *"condición", Booleano - Indica la condición dada.
+        PRECONDICIÓN=
+            *Ninguna.
+    */
+    if(condición){
+        Poner(color)
+    }
+}
+
+procedure Sacar_Si_(color, condición){ //TP5 EJ5B
+     /*
+        PROPÓSITO=
+            *Quitar el color "color" en la celda actual, siempre y cuando se cumpla la condición dada.
+        PARÁMETRO=
+            *"color", Color - indica el color a sacar.
+            *"condición", Booleano - Indica la condición dada.
+        PRECONDICIÓN=
+            *Ninguna.
+    */
+    if(condición){
+        Sacar(color)
+    }
+}
+
+procedure Mover_Si_(dirección, condición){ //TP5 EJ5B
+    /*
+        PROPÓSITO=
+            *Ubicar el cabezal hacía la dirección "dirección", siempre y cuando la condición dada se cumpla.
+        PARÁMETROS=
+            *"dirección", Dirección - Indica la dirección a mover.
+            *"condición", Booleano - Indica la condición dada.
+        PRECONDICIÓN=
+            *Ninguna.
+    */
+    if(condición){
+        Mover(dirección)
+    }
+}
+
+procedure IrAlInicioDeUnRecorridoAl_Y_(dirPrincipal, dirSecundaria){//TP6 EJ7A
+    /*
+        PROPÓSITO=
+            *Ubicar el cabezal hacía la dirección opuesta "dirPrincipal" y 
+             hacía la dirección opuesta "dirSecundaria".
+        PARÁMETROS=
+            *"dirPrincipal", Dirección - Describa la dirección a mover.
+            *"dirSecundaria", Dirección - Describe la dirección a mover.
+        PRECONDICIÓN=
+            *"dirPrincipal" y "dirSecundaria" no tienen que ser opuestos
+              y tampoco pueden ser iguales.
+    */
+    IrAlBorde(opuesto(dirPrincipal))
+    IrAlBorde(opuesto(dirSecundaria))
+}
+
+function esFinalDeUnRecorridoAl_Y_(dirPrincipal, dirSecundaria){ //TP6 EJ 7B
+    /*
+        PROPÓSITO=
+            *Indica si es la última celda ubicada en "dirPrincipal"
+             y "dirSecundaria".
+        PARÁMETROS=
+            *"dirPrincipal", Dirección - Describa la dirección a mover.
+            *"dirSecundaria", Dirección - Describe la dirección a mover.
+        PRECONDICIÓN=
+            *"dirPrincipal" y "dirSecundaria" no tienen que ser opuestos
+              y tampoco pueden ser iguales.
+        TIPO=
+            *Booleano.
+    */
+    return(not puedeMover(dirPrincipal) && not puedeMover(dirSecundaria))
+} 
+
+procedure PasarASiguienteCeldaAl_Y_(dirPrincipal, dirSecundaria){ //TP6 EJ7C
+    /*
+        PROPÓSITO=
+            *Ubicar el cabezal hacía la celda "dirPrincipal", 
+             si no puede mover hacía la celda "dirPrincipal", 
+             ubica el cabezal hacía el opuesto de la "dirPrincipal" y
+             al "dirSecundaria".
+        PARÁMETROS=
+            *"dirPrincipal", Dirección - Describa la dirección a mover.
+            *"dirSecundaria", Dirección - Describe la dirección a mover.
+        PRECONDICIÓN=
+            *"dirPrincipal" y "dirSecundaria" no tienen que ser opuestos
+              y tampoco pueden ser iguales.
+            *Hay, al menos, una celda al "dirSecundaria" y tantas celdas al "dirPrincipal" lindantes a la celda inicial.
+    */
+    if(puedeMover(dirPrincipal)){
+        Mover(dirPrincipal)
+    }else{
+        IrAlBorde(opuesto(dirPrincipal))
+        Mover(dirSecundaria)
+    }
+}
+
+function unoSi_(condicion) {
+    /*
+        PROPOSITO: describe 1 si se cumple la condicion "condicion" como verdadera
+        PRECONDICION: ninguna
+        PARAMETROS: "condicion" es un Booleano y representa una condicion.
+        TIPO: Numero
+    */
+    return (choose 1 when (condicion)
+                   0 otherwise
+    )
+}
+
+function singular_Si_(elemento, condición) {
+    /* PROPÓSITO: Describir una lista según el valor de la
+                    condición dada. Si es verdadera, describe la lista singular
+                    con **elemento**. Si no, describe la lista vacía.
+        PRECONDICIONES: Ninguna.
+        PARÁMETROS:
+                    * elemento: De un tipo cualquiera.
+                    * condición: Booleano.
+    TIPO: Lista del tipo de **elemento**.
+    */
+    return (choose [elemento] when (condición)
+            [] otherwise)
+}
+
+function contiene_A_(lista, elemento) {
+    /*
+        PROPOSITO: indica si la lista "lista" tiene contenido al elemento "elemento"
+        PRECONDICION: ninguna
+        PARAMETROS:"lista" es una Lista de tipo Elemento
+                   "elemento" es un Elemento
+        TIPO: BOoleano
+        OBSERVACION: Recorrido de busqueda sobre la lista dada buscando si el elemento dado esta
+                     incluido
+    */
+    listaRestante := lista
+    while (not esVacía(listaRestante) && not primero(listaRestante) == elemento) {
+        listaRestante := resto(listaRestante)
+    }
+    return (not esVacía(listaRestante))
+}

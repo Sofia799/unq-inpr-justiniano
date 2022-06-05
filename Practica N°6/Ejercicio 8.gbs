@@ -1,0 +1,154 @@
+procedure LlevarAlCaminanteALaMeta() {
+    /*
+        PROPOSITO: llevar al caminante hasta la meta.
+        PRECONDICION: el tablero está representado como un escenario válido para el caminante.
+    */
+    while (not estáEnLaMeta()) {
+        DarUnPaso()
+    }
+}
+
+procedure DejarHuella() {
+    /*
+        PROPOSITO: dejar una huella en la celda actual.
+        PRECONDICION: ninguna
+        OBSERVACION: una huella se representa con una bolita negra
+    */
+    Poner(huella())
+}
+
+procedure DarUnPaso() {
+    /*
+        PROPOSITO: Realizar un paso en el paseo del caminante.
+        PRECONDICION: *el cabezal esta sobre el caminante
+                      *
+    */
+    if (hayIndicadorDeCambioDeDirección()) {
+        CambiarDeDirecciónSiHayIndicador()
+        DejarHuella()
+        MoverAlCaminanteAl_(direcciónIndicada())
+    } else {
+        DejarHuella()
+        MoverAlCaminanteAl_(direcciónIndicada())
+    }
+}
+
+function direcciónIndicada() {
+    /*
+        PROPOSITO: describe la direccion a la que mira el caminante.
+        PRECONDICION: ninguna
+        TIPO: Direccion
+        OBSERVACION: el caminante se representa con bolitas azules y la direccion a la cual mira 
+                     se representa con la cantidad de bolitas azules:
+                     -1 bolita azul representa el Norte
+                     -2 bolitas azules representa el Este
+                     -3 bolitas azules representa el Sur
+                     -4 bolitas azules representa el Oeste
+    */
+    return (direcciónDelCódigo_(nroBolitas(caminante())))
+}
+
+procedure MoverAlCaminanteAl_(direccion) {
+    /*
+        PROPOSITO: mover al caminante hacia la celda en la direccion "direccion" de la actual.
+        PRECONDICION: *hay al menos una celda en la direccion "direccion"
+                      *el cabezal esta sobre el caminante
+        PARAMETROS: "direccion" es una Direccion que representa la direccion a mover el caminante
+        OBSERVACION: el caminante se representa con bolitas azules
+    */
+    Mover_Bolitas_Al_(nroBolitas(caminante()), caminante(), direccion)
+}
+
+procedure Mover_Bolitas_Al_(cantidad,color, direccion) {
+    /*
+        PROPOSITO: mover la cantidad "cantidad" de bolitas del color "color" a la celda lindante en la
+                    direccion "direccion" dejando el cabezal en esa celda.
+        PRECONDICION: *hay al menos una celda en la direccion "direccion" de la celda actual.
+                      *hay al menos la cantidad "cantidad" de bolitas de color "color" en la celda actual
+        PARAMETROS: "cantidad" es un Número que representa la cantidad de bolitas a mover
+                    "color" es un Color que representa el color de las bolitas a mover
+                    "direccion" es una Direccion que representa la direccion a mover las bolitas
+    */
+    Sacar__Veces(color, cantidad)
+    Mover(direccion)
+    Poner__Veces(color, cantidad)
+}
+
+procedure  CambiarDeDirecciónSiHayIndicador() {
+    /*
+        PROPOSITO: cambiar la direccion del caminante si hay un indicador en la celda actual.
+        PRECONDICION: *el caminante se encuentra sobre un indicador de cambio de direccion
+                      *hay un indicador de cambio de direccion en la celda actual.
+    */
+    Cambiar_ParaImitar_(caminante(), indicador())
+}
+
+procedure Cambiar_ParaImitar_(colorACambiar, colorAImitar) {
+    /*
+        PROPOSITO: cambia la cantidad de bolitas del color "colorACambiar" según la cantidad de bolitas
+                   del color "colorAImitar" de la celda actual.
+        PRECONDICION: ninguna
+        PARAMETROS: ambos parámetros son tipo Color que representan el color de las bolitas a cambiar e imitar
+    */
+    SacarTodas_(colorACambiar)
+    Poner__Veces(colorACambiar, nroBolitas(colorAImitar))
+}
+
+function hayIndicadorDeCambioDeDirección() {
+    /*
+        PROPOSITO: indica si hay un indicador de cambio de direccion en la celda actual.
+        PRECONDICION: ninguna
+        TIPO: Booleano
+        OBSERVACION: un indicador se representa con bolitas verdes
+    */
+    return (hayBolitas(indicador()))
+}
+
+function estáEnLaMeta() {
+    /*
+        PROPOSITO: indica si el caminante está en la meta
+        PRECONDICION: ninguna
+        TIPO: Booleano
+        OBSERVACION: una meta se representa con bolitas de color Rojo
+    */
+    return (hayBolitas(meta())
+}
+
+function caminante() {
+    /*
+        PROPOSITO: describe al caminante.
+        PRECONDICION: ninguna
+        TIPO: Color
+        OBSERVACION: el caminante se representa con el color Azul.
+    */
+    return (Azul)
+}
+
+function indicador() {
+    /*
+        PROPOSITO: describe un indicador
+        PRECONDICION: ninguna
+        TIPO: Color
+        OBSERVACION: un indicador se representa con el color verde
+    */
+    return (Verde)
+}
+
+function huella() {
+    /*
+        PROPOSITO: describe una huella.
+        PRECONDICION: ninguna
+        TIPO: Color
+        OBSERVACION: una huella se representa con el color Negro
+    */
+}
+
+function meta() {
+    /*
+        PROPOSITO: describe una meta.
+        PRECONDICION: ninguna
+        TIPO: Color
+        OBSERVACION: una meta se representa con el color Rojo
+    */
+    return (Rojo)
+}

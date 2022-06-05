@@ -1,0 +1,10 @@
+procedure RecorrerCamino_(direcciones) {
+    /*
+        PROPOSITO: mover el cabezal en las direcciones indicadas en la lista "direcciones" 
+        PRECONDICION: hay al menos una celda lindante de la actual para cada direccion en "direcciones" 
+        PARAMETROS: "direcciones" es una Lista de tipo Direccion
+    */
+    foreach direccion in direcciones {
+        Mover(direccion)
+    }
+}

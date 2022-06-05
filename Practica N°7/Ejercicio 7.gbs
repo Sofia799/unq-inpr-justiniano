@@ -1,0 +1,15 @@
+function distanciaAlBorde_(direccion) {
+    /*
+        PROPOSITO: describe la cantidad de celdas de distancia entre la celda actual y el borde en la direccion
+                    "direccion"
+        PRECONDICION: ninguna
+        PARAMETROS: "direccion" es una Direccion que representa la direccion del borde
+        TIPO: Numero
+    */
+    distancia := 0
+    while (puedeMover(direccion)) {
+        Mover(direccion)
+        distancia := distancia + 1
+    }
+    return (distancia)
+}

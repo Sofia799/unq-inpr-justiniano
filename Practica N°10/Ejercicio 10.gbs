@@ -1,0 +1,21 @@
+function reversoDe_(lista) {
+    /*
+        PROPOSITO: describe una lista con los mismos elementos de "lista" pero en orden reverso
+        PRECONDICION:
+        PARAMETROS: "lista" es una Lista de Elemento
+        TIPO: Lista de Elemento
+        OBSERVACION:
+    */
+    reversoDeLista := []
+    foreach elemento in lista {
+        reversoDeLista := cons(elemento, reversoDeLista)
+    }
+    return (reversoDeLista)
+}
+
+function cons(elemento, lista) {
+    /*
+        PROPOSITO: 
+    */
+    return ([elemento] ++ lista)
+}

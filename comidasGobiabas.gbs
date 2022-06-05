@@ -1,0 +1,195 @@
+/*
+EJERCICIO EXTRA DE LOS VIDEOS DEL AÑO PASADO.
+
+Comidas Gobianas
+
+Hay gente que se ha obsesionado tanto con Gobstones que comenzó a basar incluso su alimentación
+en este lenguaje. Estas personas se denominan Gobianos, y solo se alimentan a base de una serie de
+comidas que ellos consideran que son aptos para el desarrollo de un programador exitoso.
+No vamos a juzgar sus decisiones alimenticias, pero si vamos a querer modelar las comidas de estas
+personas. Para ello, contaremos con los siguientes tipos:
+
+*/
+
+type ComidaGobiana is record {
+    /*
+        PROPÓSITO: Modela una comida que come un gobiano.
+        INVARIANTES DE REPRESENTACIÓN:
+            * calorías es un número mayor a cero.
+    */
+    field nombre    // String
+    field origen    // Continente
+    field calorías  // Número
+}
+
+type Continente is variant {
+    /*
+        PROPÓSITO: Modela un continente de donde puede proceder una comida gobiana.
+    */
+    case África {}
+    case América {}
+    case Asia {}
+    case Europa {}
+    case Oceanía {}
+}
+
+/*
+REGISTROS
+
+Ejercicio 1)
+
+Como primer ejercicio queremos modelar dos de las comidas Gobianas más típicas, las
+Bolitas de Fraile, y las Bolitas de Queso. Las primeras son una comida originaria de
+América, y tiene 500 calorías. Las segundas, son de Europa, y tienen tan solo 150
+calorías. Se pide implemente entonces:
+
+Ejercicio a) bolitasDeFraile, una función que describe la comida gobiana
+Bolitas de Fraile.
+*/
+function bolitasDeFraile() {
+    /*
+        PROPOSITO: describe una bolita de fraile
+        PRECONDICIONES:Ninguna
+        PARAMETROS: Ninguna
+        Tipo: COmida Gobiana
+    */
+    return (ComidaGobiana 
+                (nombre <- "bolita de fraile",
+                origen <- América,
+                calorías <- 500))
+}
+
+/*
+Ejercicio b) bolitasDeQueso, una función que describe la comida gobiana
+Bolitas de Queso.
+*/
+function bolitasDeQueso() {
+    /*
+        PROPOSITO: describe una bolita de queso
+        PRECONDICIONES:Ninguna
+        PARAMETROS: Ninguna
+        Tipo: COmida Gobiana
+    */
+    return (ComidaGobiana 
+                (nombre <- "bolita de queso",
+                origen <- Europa,
+                calorías <- 150))
+}
+
+/*
+Ejercicio 2)
+Deseamos determinar si, dadas dos comidas gobianas, la primera tiene más calorías que
+la segunda. Para ello, realizar la función tieneMásCalorias_Que_ que dadas dos
+comidas gobianas, indica sí la primera tiene más calorías que la segunda.
+*/
+function tieneMásCalorias_Que_(comida1, comida2) {
+    /*
+        PROPOSITO: indica si la comida "comida1" tiene mas calorias que la comida "comida2"
+        PRECONDICION: ninguna
+        PARAMETROS: ambos parámetros son de tipo ComidaGogiana
+        TIPO:Booleano
+    */
+    return (calorias(comida1) > calorias(comida2))
+}
+
+/*
+Ejercicio 3)
+Además, queremos poder elegir de forma automática la comida más saludable, dadas
+dos comidas gobianas. Para ello, queremos crear la función
+comidaMásSaludableEntre_Y_ que describe la comida gobiana más saludable de las
+dos comidas dadas. La comida más saludable es aquella que tiene menos calorías.
+*/
+function comidaMásSaludableEntre_Y_(comida1, comida2) {
+    /*
+        PROPOSITO: describe la comida mas saludable entre las comidas "comida1" y "comida2"
+        PRECONDICION: ninguna
+        PARAMETROS: Ambos parametros son tipo ComidaGobiana
+        TIPO: ComidaGobiana
+    */  
+    return (choose comida1 when (tieneMásCalorias_Que_(comida2, comida2))
+                    comida2 otherwise)
+}
+
+/*
+Ejercicio 4)
+Algunos fanáticos de las comidas gobianas solo comen comidas si provienen de
+determinadas regiones. Por ello, deseamos poder crear la función proviene_De_ que
+dada una comida y un continente indica si una comida proviene del continente dado.
+*/
+function proviene_De_(comida, continente) {
+    /*
+        PROPOSITO: indica si la comida "comida" proviene del continente "continente"
+        PRECONDICION: ninguna
+        PARAMETROS: "comida" es una ComidaGobiana
+                    "continente" es un Continente
+    */
+    return (origen(comida) == continente)
+}
+
+/*
+Ejercicio 5)
+Hay gente que tiene la idea de que, si se le unta manteca a una comida, esta se vuelve
+mucho mejor. Por este motivo, se quiere hacer la función enmantecar que describe una
+nueva comida, igual que la dada, pero donde las calorías aumentan en 200. Por ejemplo,
+enmantecar una bolita de fraile, produce una bolita de fraile de 700 calorías.
+*/
+
+//6
+/*
+Una albondigueada es un tipo de plato que consiste en una serie de albóndigas de carne
+en dónde cada una tiene más calorías que la anterior. Se sirven un total de 5 albóndigas
+con calorías que comienzan en 300 y aumentan de a 100. Se pide que escriba la función
+albondigueada que describe una lista de 5 comidas gobianas donde todas las comidas
+son albóndigas provenientes de Europa, y donde tienen 300, 400, 500, 600 y 700
+calorías.
+*/
+function albongigueada() {
+    /*
+        PROPOSITO: describe una lista de 5 comidas gobianas donde todas las comidas
+        son albóndigas provenientes de Europa, y donde tienen 300, 400, 500, 600 y 700
+        calorías.
+        PARAMETROS: ninguna
+        PRECONDICION: ninguna
+        TIPO: [ComidaGobiana]
+        ESTRATEGIA: 
+    */
+    return ([albondigaDe_ConCalorias_(Europa, 300)] ++
+            [albondigaDe_ConCalorias_(Europa, 400)] ++
+            [albondigaDe_ConCalorias_(Europa, 500)] ++
+            [albondigaDe_ConCalorias_(Europa, 600)] ++
+            [albondigaDe_ConCalorias_(Europa, 700)])
+}
+
+//otra forma
+function albongigueada() {
+    /*
+        PROPOSITO: describe una lista de 5 comidas gobianas donde todas las comidas
+        son albóndigas provenientes de Europa, y donde tienen 300, 400, 500, 600 y 700
+        calorías.
+        PARAMETROS: ninguna
+        PRECONDICION: ninguna
+        TIPO: [ComidaGobiana]
+        ESTRATEGIA: 
+    */
+    listaDeAlbondigas := []
+    caloriasDeAlbondigas := 300
+    repeat (5) {
+        listaDeAlbondigas := listaDeAlbondigas ++ [albondigaDe_ConCalorias_(Europa, caloriasDeAlbondigas)]
+        caloriasDeAlbondigas := caloriasDeAlbondigas + 100
+    }
+    return (listaDeAlbondigas)
+}
+
+function albondigasDe_ConCalorias_(origenAlbondiga,calorias) {
+    /*
+        PROPOSITO: describe una albondiga de origen "origen" con cantidad de calorias "calorias"
+        PRECONDICION: ninguna
+        PARAMETROS: "origen" es un Continente
+                    "calorias" es un Numero
+        TIPO: ComidaGobiana
+    */
+    return (ComidaGobiana (
+               (nombre <- "albondiga",
+                origen <- origenAlbondiga,
+                calorías <- calorias)))
+}

@@ -1,0 +1,72 @@
+// 6a
+function haySiguienteTramoEn_(ruta) {
+    /*
+        PROPOSITO: indica si hay siguiente tramo en la ruta en "direcciones"
+        PRECONDICION: ninguna
+        PARAMETROS: "direcciones" es una Lista de Direccion que representa la ruta
+        TIPO: Booleano
+    */
+    return (not esVacía(ruta) && not esVacía(resto(ruta)))
+}
+
+// 6b
+function sigueUnaCurvaEn_(ruta) {
+    /*
+        PROPOSITO: indica si en el siguiente tramo de la ruta "ruta" sigue una curva
+        PRECONDICION: ninguna
+        PARAMETROS: "ruta" es una Lista de Direcciones q representa la ruta
+        TIPO: BOoleano
+    */
+    return (haySiguienteTramoEn_(ruta) && esCurva(ruta))
+}
+
+function esCurva(ruta) {
+    /*
+        PROPOSITO: indica si la ruta "ruta" es una curva
+        PRECONDICION: "ruta" debe tener al menos 2 direcciones
+        PARAMETROS: "ruta" es una Lista de Direccion q representa una ruta
+        TIPO: Booleano
+    */
+    return (segundo_(ruta) == siguiente(primero(ruta)) || 
+            segundo_(ruta) == previo(primero(ruta)))
+}
+
+function segundo_(lista) {
+    /*--*/
+    return (primero(resto(lista)))
+}
+
+// 6c
+function sigueCurvaADerechaEn_(ruta) {
+    /*
+        PROPOSITO: indica si la ruta "ruta" sigue en curva hacia la derecha
+        PRECONDICION: hay un tramo en la ruta "ruta".
+                      la ruta "ruta" es una curva
+        PARAMETROS: "ruta" es una Lista de Direccion que representa la ruta
+        TIPO: Booleano
+    */
+    return (segundo_(ruta) == siguiente(primero(ruta)))
+}
+
+// 6d
+function sigueCurvaAIzquierdaEn_(ruta) {
+    /*
+        PROPOSITO: india si la ruta "ruta" sigue en curva hacia la izquierda
+        PRECONDICION: hay un tramo en la ruta "ruta".
+                      la ruta "ruta" es una curva
+        PARAMETROS: "ruta" es una Lista de Direccion que representa la ruta
+        TIPO: Booleano
+    */
+    return (segundo_(ruta) == previo(primero(ruta)))
+}
+
+// 6e
+function sigueRectaEn_(ruta) {
+    /*
+        PROPOSITO: indica si la ruta "ruta" es un tramo que sigue recto
+        PRECONDICION: hay un tramo en la ruta "ruta"
+        PARAMETROS: "ruta" es una Lista de tipo Direccion que representa la ruta
+        TIPO: BOOleano
+    */
+    return (primero(ruta) == segundo_(ruta))
+}

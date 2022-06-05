@@ -1,0 +1,33 @@
+procedure IrANesimaVacia(n) {
+    /*
+        PROPOSITO: ubica el cabezal en la celda vacia número "n" que se encuentra
+        en el tablero. Si no hay suficientes celdas vacias, deja el cabezal en
+        la esquina Nor-Este
+        PRECONDICION: ninguna
+        PARAMETROS: "n" es un Número que representa el número de la celda vacia
+        a posicionar el cabezal
+        OBSERVACION: recorrido de busqueda por celdas
+    */
+    IrAlInicioDeUnRecorridoAl_Y_(Este,Norte)
+    celdasVaciasYaVistas := unoSi_(esVacia())
+    while (not esFinalDeUnRecorridoAl_Y_(Este, Norte) && 
+           not celdasVaciasYaVistas == n) {
+        PasarASiguienteCeldaAl_Y_(Este,Norte)
+        celdasVaciasYaVistas := celdasVaciasYaVistas + unoSi_(esVacia())
+    }
+    
+}
+
+function esVacia() {
+    /*
+        PROPOSITO: indica si la celda actual esta vacia
+        PRECONDICION: ninguna
+        TIPO:Booleano
+    */
+    return (
+        not hayBolitas(Rojo) &&
+        not hayBolitas(Azul) && 
+        not hayBolitas(Verde) && 
+        not hayBolitas(Negro)
+    )
+}

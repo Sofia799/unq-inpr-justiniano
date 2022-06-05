@@ -1,0 +1,10 @@
+procedure IrAlBorde_(direccion){
+    /*
+        PROPOSITO: ubicar el cabezal en el borde de la direccion "direccion"
+        PRECONDICION: ninguna
+        PARAMETROS: 'direccion' es una Direccion que representa la direccion del borde a mover
+    */
+    while (puedeMover(direccion)) {
+        Mover(direccion)
+    }
+}

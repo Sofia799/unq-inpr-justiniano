@@ -1,0 +1,40 @@
+// 8a
+function sumatoriaDe_(numeros) {
+    /*
+        PROPOSITO: describe la sumatoria de los numeros de la lista "numeros"
+        PRECONDICION: ninguna
+        PARAMETROS: "numeros" es una Lista de tipo Numero
+        TIPO: Numero
+    */
+    sumatoria := 0
+    foreach numero in numeros {
+        sumatoria := sumatoria + numero
+    }
+    return (sumatoria)
+}
+
+// 8b
+function productoriaDe_(numeros) {
+    /*
+        PROPOSITO: describe el producto de los numeros de la lista "numeros"
+        PRECONDICION: ninguna
+        PARAMETROS: "numeros" es una Lista de tipo Numero
+        TIPO: Numero
+    */
+    producto := 1
+    foreach numero in numeros {
+        producto := producto * numero
+    }
+    return (producto)
+}
+
+// 8c
+function cantidadDeBolitas_DelTablero(color) {
+    /*
+        PROPOSITO: describe la cantidad de bolitas de color "color" del tablero
+        PRECONDICION: ninguna
+        PARAMETROS: "color" es un Color
+        TIPO: Numero
+    */
+    return (sumatoriaDe_(aparicionesDeColor_(color)))
+}

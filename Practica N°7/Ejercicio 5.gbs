@@ -1,0 +1,15 @@
+function nroBolitas_EnLaFilaActual(color) {
+    /*
+        PROPOSITO: describe el número de bolitas del color "color" de la fila actual
+        PRECONDICION: ninguna
+        PARAMETROS : "color" es un Color que representa el color de las bolitas a contar
+        TIPO: Número
+    */
+    IrAlBorde(Oeste)
+    cantidadDeBolitasYaVistas := 0
+    while (puedeMover(Este)) {
+        cantidadDeBolitasYaVistas := cantidadDeBolitasYaVistas + nroBolitas(color)
+        Mover(Este)
+    }
+    return (cantidadDeBolitasYaVistas + nroBolitas(color))
+}

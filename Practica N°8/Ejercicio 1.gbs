@@ -1,0 +1,55 @@
+type DíaDeLaSemana is variant {
+    // Proposito: Modelar un día de la semana
+    case Lunes      {}
+    case Martes     {}
+    case Miercoles  {}
+    case Jueves     {}
+    case Viernes    {}
+    case Sabado     {}
+    case Domingo    {}
+}
+
+function díaSiguiente_(dia) {
+    /*
+        PROPOSITO: Describe el dia siguiente del dia "dia".
+        PRECONDICION: ninguna
+        PARAMETROS: "dia" es un DiaDeLaSemana
+        TIPO: DiaDeLaSemana
+    */
+    return (choose  Lunes       when (dia == Domingo)
+                    Martes      when (dia == Lunes)
+                    Miercoles   when (dia == Martes)
+                    Jueves      when (dia == Miercoles)
+                    Viernes     when (dia == Jueves)
+                    Sabado      when (dia == Viernes)
+                    Domingo     otherwise 
+    )
+}
+
+function díaPrevio_(dia) {
+    /*
+        PROPOSITO: describe el dia previo al dia "dia"
+        PRECONDICION: ninguna
+        PARAMETROS: "dia" es un DiaDeLaSemana
+        TIPO: DiaDeLaSemana
+    */
+    return (choose  Lunes       when (dia == Martes)
+                    Martes      when (dia == Miercoles)
+                    Miercoles   when (dia == Jueves)
+                    Jueves      when (dia == Viernes)
+                    Viernes     when (dia == Sabado)
+                    Sabado      when (dia == Domingo)
+                    Domingo     otherwise 
+    )
+}
+
+function esDíaDeFinDeSemana_(dia) {
+    /*
+        PROPOSITO: indica si el dia "dia" es un dia de fin de semana
+        PRECONDICION: ninguna
+        PARAMETROS: "dia" es un Dia de la semana
+        TIPO:Booleano
+    */
+    return (dia == Viernes || dia == Sabado || dia == Domingo)
+}
+

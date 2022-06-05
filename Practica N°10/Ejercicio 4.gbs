@@ -1,0 +1,13 @@
+procedure Poner_Bolitas_EnElTablero(numeros,color) {
+    /*
+        PROPOSITO:  dada una lista de números y un color, recorre el tablero con dirección principal Norte y 
+        dirección secundaria Oeste y pone en cada celda la cantidad de bolitas del color dado, según el
+        elemento en la posición correspondiente. Si hubiera menos números que celdas, en las celdas restantes 
+        no se pondrán bolitas.
+        PRECONDICION: ninguna
+        PARAMETROS: "numeros" es una Lista de tipo Numero
+                    "color" es un Color
+        OBSERVACION:
+    */
+    IrAlBorde(dirección)
+}
