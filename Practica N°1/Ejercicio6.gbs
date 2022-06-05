@@ -1,0 +1,85 @@
+/*
+Escribir los siguientes programas:
+a. uno que ponga un cuadrado de tamaño 3 con bolitas de color verde, con centro en la celda
+inicial (dejando el cabezal en dicha celda al finalizar)
+    i. ¿Qué ocurre si el tablero ya tenı́a bolitas verdes? ¿Es esto un problema, o el efecto
+        obtenido es acorde al propósito?
+        el efecto obtenido es acorde al propósito.
+    ii. ¿Qué ocurriría si desde la celda inicial no hay espacio para colocar las bolitas
+        necesarias para que se cumpla el propósito?
+        Explota porque necesita como minimo tener una celda lindante para las 4 direcciones de
+        la celda actual
+*/
+
+program {
+    /*
+        PROPÓSITO: dibujar un cuadrado de tamaño 3 de bolitas verdes
+    */
+    Mover(Oeste)
+    Mover(Sur)
+    //linea hacia arriba
+    Poner(Verde)
+    Mover(Norte)
+    Poner(Verde)
+    Mover(Norte)
+    Poner(Verde)
+    //linea hacia el este
+    Mover(Este)
+    Poner(Verde)
+    Mover(Este)
+    Poner(Verde)
+    //linea hacia el sur
+    Mover(Sur)
+    Poner(Verde)
+    Mover(Sur)
+    Poner(Verde)
+    //linea hacia el oeste
+    Mover(Oeste)
+    Poner(Verde)
+    //ir al medio
+    Mover(Norte)
+    Poner(Verde)
+
+}
+
+/*
+    b. uno que saque un cuadrado de tamaño 3 con bolitas de color verde (saca una bolita de cada
+    celda), siendo la celda inicial el centro del cuadrado, dejando el cabezal en dicha celda al
+    finalizar.
+        i. ¿Qué sucede si no hay al menos una bolita verde en cada una de las celdas necesarias?
+            ¿Y si el tablero no tiene el tamaño adecuado?
+            Si no hay al menos una bolita verde en las celdas explota, porq no hay bolitas para sacar, y
+            si noalcanza el tamaño del tablero tambien explota porque se necesita como minimo tener una celda lindante
+            en las 4 direcciones de la celda actual
+*/
+
+program {
+    /*
+        PROPÓSITO: Sacar un cuadrado de tamaño 3 de bolitas verdes.
+    */
+     Mover(Oeste)
+    Mover(Sur)
+    //linea hacia arriba
+    Sacar(Verde)
+    Mover(Norte)
+    Sacar(Verde)
+    Mover(Norte)
+    Sacar(Verde)
+    //linea hacia el este
+    Mover(Este)
+    Sacar(Verde)
+    Mover(Este)
+    Sacar(Verde)
+    //linea hacia el sur
+    Mover(Sur)
+    Sacar(Verde)
+    Mover(Sur)
+    Sacar(Verde)
+    //linea hacia el oeste
+    Mover(Oeste)
+    Sacar(Verde)
+    //ir al medio
+    Mover(Norte)
+    Sacar(Verde)
+
+}

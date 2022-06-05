@@ -1,0 +1,33 @@
+/*
+    4. ¿Qué pide el enunciado?
+EN PAPEL Los siguientes programas resuelven incorrectamente el ejercicio anterior de esta práctica.
+Para cada uno de ellos, explicar por qué no son correctos. Comparar con la solución dada para el
+ejercicio anterior.
+*/
+
+program {
+    Mover(Norte)
+    Poner(Azul)
+}
+//no queda en la celda donde comenzo
+
+program {
+Poner(Azul)
+Mover(Este)
+Mover(Oeste)
+}
+//esta poniendo una bolita azul en la celda actual, no en la lindante al norte.
+
+program {
+Mover(Norte)
+Poner(Verde)
+Mover(Sur)
+}
+//esta poniendo una bolita verde en la celda al norte, no azul.
+
+program {
+Poner(Azul)
+Mover(Norte)
+Mover(Sur)
+}
+//pone una bolita azul en la celda actual
