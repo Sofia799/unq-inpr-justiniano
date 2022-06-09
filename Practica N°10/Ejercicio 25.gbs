@@ -1,0 +1,14 @@
+function lista_AgrupadosDeA_(lista, cantidad) {
+    /*
+        PROPOSITO: describe la lista de listas que agrupa los elementos de la lista dada en grupos, donde cada 
+        grupo tiene exactamente la cantidad de elementos indicada, excepto el último grupo, que puede tener menos 
+        elementos.
+        PRECONDICION: ninguna
+        PARAMETROS: "lista" es una Lista de Elemento
+                    "cantidad" es un Número
+        TIPO: Lista de Listas de tipo Elemento
+        OBSERVACION: 
+    */
+    listaAgrupada := []
+    
+}     

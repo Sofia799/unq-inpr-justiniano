@@ -1,0 +1,37 @@
+// 23 a
+function máximoElementoDe_(numeros) {
+    /*
+        PROPOSITO: describe el máximo elemento de la lista "numeros"
+        PRECONDICION: "numeros" no es vacía
+        PARAMETROS: "numeros" es una Lista de tipo Número
+        TIPO: Número
+        OBSERVACION: 
+    */
+    maximoVisto := primero(numeros)
+    foreach numero in numeros {
+        maximoVisto := maximoEntre_Y_(maximoVisto, numero)
+    }
+    return (maximoVisto)
+}
+
+function maximoEntre_Y_(nro1, nro2) {
+    /*
+        PROPOSITO: describe el maximo entre los números "nro1" y "nro2"
+        PRECONDICION: ninguna
+        PARAMETROS: Ambos parámetros son tipo Número
+        TIPO: Número
+    */
+    return (choose nro1 when (nro1 > nro2)
+                   nro2 otherwise)
+}
+
+// 23b
+function sinElMaximoElemento_(numeros) {
+    /*
+        PROPOSITO: Describe la lista "numeros" sin su elemento más grande.
+        PRECONDICION: "numeros" no es vacía
+        PARAMETROS: "numeros" es una Lista de tipo Número
+        TIPO: Lista de tipo Número
+    */
+    return (sinLaPrimeraApariciónDe_en_(maximoElementoDe_(numeros), numeros))
+}

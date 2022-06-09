@@ -1,0 +1,73 @@
+// 22a
+function minimoElementoDe_(numeros) {
+    /*
+        PROPOSITO: describe el numero mas chico de la lista "numeros"
+        PRECONDICION: "numeros" no es vacía
+        PARAMETROS: "numeros" es una Lista de tipo Numero
+        TIPO: Numero
+        OBSERVACION: 
+    */
+    minimoVisto := primero(numeros)
+    foreach numero in numeros {
+        minimoVisto := minimoEntre_Y_(minimoVisto, numero)
+    }
+    return (minimoVisto)
+}
+
+function minimoEntre_Y_(nro1, nro2) {
+    /*
+        PROPOSITO: describe el mínimo entre los números "nro1" y "nro2"
+        PRECONDICION: ninguna
+        PARAMETROS: Ambos parámetros son tipo Número
+        TIPO: Número
+    */
+    return (choose nro1 when (nro1 < nro2)
+                   nro2 otherwise)
+}
+
+// 22b
+function sinElMínimoElemento_(numeros) {
+    /*
+        PROPOSITO: Describe la lista "numeros" sin su elemento más chico.
+        PRECONDICION: "numeros" no es vacía
+        PARAMETROS: "numeros" es una Lista de tipo Número
+        TIPO: Lista de tipo Número
+    */
+    return (sinLaPrimeraApariciónDe_en_(minimoElementoDe_(numeros), numeros))
+}
+
+// 22c con foreach
+function lista_ordenada(numeros) {
+    /*
+        PROPOSITO: Describe la lista "numeros" ordenada de menor a mayor
+        PRECONDICION: "numeros" no es vacía
+        PARAMETROS: "numeros" es una Lista de tipo Número
+        TIPO: Lista de tipo Número
+        OBSERVACION: recorrido de 
+    */
+    listaOrdenada := []
+    listaRestante := numeros
+    foreach numero in listaRestante { //se podría reemplazar por un repeat ya que no utilizo nunca el número
+        listaOrdenada := listaOrdenada ++ [minimoElementoDe_(listaRestante)]
+        listaRestante := sinElMínimoElemento_(listaRestante)
+    }
+    return (listaOrdenada)
+}
+
+// 22c con while
+function lista_ordenada(numeros) {
+    /*
+        PROPOSITO: Describe la lista "numeros" ordenada de menor a mayor
+        PRECONDICION: "numeros" no es vacía
+        PARAMETROS: "numeros" es una Lista de tipo Número
+        TIPO: Lista de tipo Número
+        OBSERVACION: 
+    */
+    listaOrdenada := []
+    listaRestante := numeros
+    while (not esVacía(listaRestante)) {
+        listaOrdenada := listaOrdenada ++ [minimoElementoDe_(listaRestante)]
+        listaRestante := sinElMínimoElemento_(listaRestante)
+    }
+    return (listaOrdenada)
+}

@@ -1,0 +1,58 @@
+type TipoDePago is variant {
+    /* PROP: modelar Tipos de pago aceptados */
+    case Tarjeta {}
+    case MartPago {}
+    case Efectivo {}
+}
+type Producto is record{
+    /* PROP: modelar productos
+    INV.REP.: precio > 0 */
+    field nombre // String
+    field marca // String
+    field precio // Número
+}
+type Cliente is record {
+    /* PROP: modelar clientes */
+    field dni // String
+    field tipoDePago // TipoDePago
+    field productos // [Producto]
+}
+
+type Caja is record {
+    /* PROP: modelar cajas
+    INV.REP.: número > 0
+    facturado >= 0 */
+    field número // Número
+    field clientesEsperando // [Cliente]
+    field aceptaPagos // [TipoDePago]
+    field esRápida // Bool
+    field facturado // Número
+}
+
+function gobsMart_conIngresosDe_(gobsmart, clientes) {
+    /*
+        PROPOSITO: describe el gobsmart resultante de agregar a cada cliente de "clientes" a una caja de gobsmart
+        PRECONDICION: la caja que inf
+        PARAMETROS: gobsmart [Caja]
+                    clientes [Cliente]
+        TIPO: [Caja]
+        OBSERVACION: recorrido sobre los clientes agregando a cada uno a alguna caja
+    */
+    gobsmartActualizado := [gobsmart]
+    foreach cliente in clientes {
+    gobsmartActualizado := gobsmart_ConIngresoDe_(gobsmartActualizado, cliente)
+    }
+    return (gobsmartActualizado)
+}
+
+function gobsmart_ConIngresoDe_(gobsmart,cliente) {
+    /*
+        PROPOSITO:
+        TIPO: [Caja]
+    */
+    cajaDelCliente := cajaMenosOcupadaDe_(lasCajasDe_QueAceptan_(gobsmart, tipoDePago(cliente)))
+    cajaAsignadaA_De(cliente, gobsmart)
+    return (gobsmart_AntesDe_(gobsmart, cajaDelCliente) ++ 
+           [laCaja_ConElCliente_(cajaDelCliente,cliente)] ++
+           gobsmart_DespuesDe_(gobsmart,cajaDelCliente))
+}

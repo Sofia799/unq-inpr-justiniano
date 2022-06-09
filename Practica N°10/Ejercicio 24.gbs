@@ -1,0 +1,21 @@
+function segmentoInicialDeLargo_de_(posicion, lista) {
+    /*
+        PROPOSITO: describe la lista que se obtiene de quedarse únicamente con "posicion" de elementos de la 
+                   lista "lista" comenzando por el primero (sus primeros elementos), o todos, si no hay suficientes.
+        PRECONDICION: "lista" no es vacía
+        PARAMETROS: "posicion" es un Número
+                    "lista" es una Lista de cualquier tipo Básico (Elemento)
+        TIPO: Lista del tipo Básico (Elemento)
+        OBSERVACION: recorrido de búsqueda y acumulación sobre la lista acumulando los elementos de la lista dada a otra
+        lista hasta que la posicion sea igual al índice. Sino ,devuelve toda la lista
+    */
+    indice := 0
+    segmentoLista := []
+    listaRestante := lista
+    while (not esVacía(listaRestante) && not indice == posicion) {
+        segmentoLista := segmentoLista ++ [primero(listaRestante)]
+        listaRestante := resto(listaRestante)
+        indice := indice + 1
+    }
+    return (segmentoLista)
+}
