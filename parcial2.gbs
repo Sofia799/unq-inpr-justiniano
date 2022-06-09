@@ -1,0 +1,244 @@
+//1
+function recinto_DeBosqueParaAnimales_(nombreRecinto, animales) {
+    /*
+        PROPOSITO: Describe un nuevo recinto de tipo Bosque con el nombre dado y la lista de animales dada y con
+                   el doble de disponibilidad que de animales en la lista dada
+        PRECONDICION: * "animales" no es vacía.
+                      * "nombreRecinto" no es vacío
+                      * los animales de la lista "animales" deben poder vivir en un habitat de Bosque
+                      * no hay dos animales con el mismo nombre en "animales"
+        PARAMETROS: "nombreRecinto" es un String
+                    "animales" es una Lista de tipo Animal
+        TIPO: Recinto
+    */
+    return (Recinto (
+                    habitat     <- Bosque,
+                    habitantes  <- animales,
+                    capacidad   <- longitudDe_(animales) * 2,
+                    nombre      <- nombreRecinto
+                    )
+            )
+}
+
+// 2
+function hayRecintoSalvajeEn_(recintos) {
+    /*
+        PROPOSITO: indica si en la lista "recintos" hay algun recinto salvaje
+        PRECONDICION: ninguna
+        PARAMETROS: "recintos" es una Lista de tipo Recinto
+        TIPO: Booleano
+        OBSERVACION: *un recinto es salvaje si no tiene animales nacidos en cautiverio
+                     *es un recorrido de busqueda sobre la lista de recintos 
+    */
+    recintosQueQuedanVer := recintos
+    while (not esVacía(recintosQueQuedanVer) && not esRecintoSalvaje(primero(recintosQueQuedanVer))) {
+        recintosQueQuedanVer := resto(recintosQueQuedanVer)
+    }
+    return (not esVacía(recintosQueQuedanVer))
+}
+
+function esRecintoSalvaje(recinto) {
+    /*
+        PROPOSITO: indica si el "recinto" es salvaje
+        PRECONDICION: ninguna
+        PARAMETROS: "recinto" es un Recinto
+        TIPO: Booleano
+        OBSERVACION: recorrido de busqueda sobre la lista de animales del recinto dado
+    */
+    animalesQueQuedanVer := habitantes(recinto)
+    while (not esVacía(animalesQueQuedanVer) && esAnimalSalvaje_(primero(recintosQueQuedanVer))) { 
+                                              //not nacidoEnCautiverio(primero(recintosQueQuedanVer))
+        animalesQueQuedanVer := resto(animalesQueQuedanVer)
+    }
+    return (esVacía(animalesQueQuedanVer))
+}
+
+
+function esAnimalSalvaje_(animal) {
+    /*--*/
+    return (not nacidoEnCautiverio(animal))
+}
+
+// 3
+function mejorRecintoPara_Entre_(animal, recintos){ 
+    /*
+        PROPOSITO: describe al recinto mas adecuado para el animal dado entre los recintos de la lista dada.
+                   si hay varios recintos igual de adecuados, describe el primero en la lista
+        PRECONDICION: debe haber al menos un recinto que sea adecuado para el animal dado con al menos 1 de
+                      disponibilidad
+        PARAMETROS: "animal" es un Animal
+                    "recintos" es una Lista de tipo Recinto
+        TIPO: Recinto
+    */
+    return (recintoDeMayorDisponibilidadEntre_(
+                recintosDeHabitatPara_En_(animal, recintos))
+            )
+}
+
+function recintosDeHabitatPara_En_(animal, recintos) {
+    /*
+        PROPOSITO: describe los recintos de la lista dada que son adecuados para el animal dado
+        PRECONDICION: ninguna
+        PARAMETROS: "animal" es un Animal
+                    "recintos" es una Lista de tipo Recinto
+        TIPO: Lista de tipo Recinto
+        OBSSERVACION: es un recorrido de filtrado sobre los recintos dado
+    */
+    recintosAdecuados := [] 
+    foreach recinto in recintos {
+        recintosAdecuados := recintosAdecuados ++ singularSi(esRecinto_AdecuadoPara_(recinto, aninal))
+    }
+    return (recintosAdecuados)
+}
+
+function esRecinto_AdecuadoPara_(recinto, animal) {
+    /*
+        PROPOSITO: indica si el recinto dado es adecuado para el animal dado
+        PRECONDICION: ninguna
+        PARAMETROS: "recinto" es un Recinto
+                    "animal" es un Animal
+        TIPO: Booleano
+    */
+    return (contiene_A_(
+                habitatsFrecuentes(especie(animal), habitat(recinto))
+                )
+    )
+}
+
+function recintoDeMayorDisponibilidadEntre_(recintos) {
+    /*
+        PROPOSITO: describe el recinto de mayor disponibilidad entre los recintos dados
+        PRECONDICION: la lista dada no puede ser vacía
+        PARAMETROS: "recintos" es una Lista de tipo Recinto
+        TIPO: Recinto
+        OBSERVACIONES: recorrido maximo/minimo sobre los recintos dados
+    */
+    elDeMayorDisponibilidadHastaAhora := primero(recintos)
+    foreach recinto in resto(recintos) {
+        elDeMayorDisponibilidadHastaAhora := elDeMayorDisponibilidadEntre_Y_(elDeMayorDisponibilidadHastaAhora, recinto)
+    }
+    return (elDeMayorDisponibilidadHastaAhora)
+}
+
+function elDeMayorDisponibilidadEntre_Y_(primerRecinto, segundoRecinto) {
+    /*
+        PROPOSITO: describe el recinto con mayor disponibilidad entre en los dados.
+                   si ambos recintos igual de adecuados, describe el primero
+        PRECONDICION:  ninguna
+        PARAMETROS:*primerRecinto: Recinto
+                    *segundoRecinto: Recinto
+        TIPO: Recinto
+    */
+    return (choose 
+                primerRecinto when (
+                        disponibilidadDe_(primerRecinto) 
+                        > 
+                        disponibilidadDe_(segundoRecinto)
+                    )
+                segundoRecinto otherwise)
+}
+
+function disponibilidadDe_(recinto) {
+    /*
+        PROPOSITO: describe la disponibilidad de un recinto
+        PRECONDICION: ninguna
+        PARAMETROS:
+        TIPO: Numero
+    */
+    return (capacidad(recinto) - longitudDe_(habitantes(recinto)))
+}
+
+// 4
+function especiesDominantesEn_(recintos) {
+    /*
+        PROPOSITO: describe la lista de las especies dominantes
+        PRECONDICION: *cada recinto en la lista dada está habitada
+                      *en cada recinto solo hay una especie dominante
+        PARAMETROS: "recintos"
+        TIPO: Lista de tipo Especie
+        OBSERVACION: recorrido de transformacion sobre los recintos dados.
+    */
+    especiesDominantesAlMomento := []
+    foreach recinto in recintos {
+        especiesDominantesAlMomento := especiesDominantesAlMomento ++ [especieDominanteEn_(recinto)]
+    }
+    return (especiesDominantesAlMomento)
+}
+
+function especieDominanteEn_(recinto) {
+    /*
+        PROPOSITO: describe la especie dominante en el recinto dado
+        PRECONDICION: el recinto está habitado
+                      el recinto tiene una sola especie dominante
+        PARAMETROS: "recinto" es un Recinto
+        TIPO: Especie
+        OBSERVACION: recorrido de maximo/minimo sobre las especies que hay en el recinto
+    */
+    especieDominanteHastaAhora := primero(sinDuplicados(especiesEnElRecinto_(recinto)))
+    foreach especie in resto(especieDominanteHastaAhora) {
+        especieDominanteHastaAhora := especieDominanteEntre_Y_En(especieDominanteHastaAhora, especie, recinto)
+    }
+    return (especieDominanteHastaAhora)
+}
+
+function especiesEnElRecinto_(recinto) {
+    /*
+        PROPOSITO: describe las especies que hay entre los habitantes del recinto dado
+        PARAMETROS: *recinto:Recinto
+        PRECONDICION: ninguna
+        TIPO: [Especie]
+        OBSERVACION: recorrido de transformacion sobre los animales del recinto dado
+    */
+    especiesHastaAhora := []
+    foreach animal in habitantes(recinto) {
+        especiesHastaAhora := especiesHastaAhora ++ [especie(animal)]
+    }
+    return (especiesHastaAhora)
+}
+
+function especieDominanteEntre_Y_En(primerEspecie,segundaEspecie,recinto) {
+    /*
+        PROPOSITO: describe la especie que es mas dominante entre las 2 dadas en el recinto dado.
+                   si son iguales describe la primerEspecie
+        PARAMETROS: *primerEspecie: Especie
+                    *segundaEspecie: Especie
+                    *recinto: Recinto
+        PRECONDICION: ninguna
+        TIPO: Especie
+    */
+    return (choose
+                    primerEspecie when(
+                        cantidadDeAnimalesDe_En_(primerEspecie, recinto)
+                        >=
+                        cantidadDeAnimalesDe_En_(segundaEspecie, recinto)
+                    )
+
+                    segundaEspecie otherwise)
+}
+
+function cantidadDeAnimalesDe_En_(especie, recinto) {
+    /*
+        PROPOSITO: describe la cantidad de animales de laespecie dada en el recinto dado
+        PRECONDICION: ninguna
+        PARAMETROS: *especie : Especie
+                    *recinto :Recinto
+        TIPO: Numero
+        OBSERVACION: recorrido de totalizacion/acumulacion 
+    */
+    cantidadAnimalesHastaAhora := 0
+    foreach animal in habitantes(recinto) {
+        cantidadAnimalesHastaAhora := cantidadAnimalesHastaAhora + unoSi(elAnimal_EsDeLaEspecie(animal,especie))
+    }
+    return (cantidadAnimalesHastaAhora)
+}
+
+function elAnimal_EsDeLaEspecie(animal,especie){
+    /*
+        PROPOSITO: indica si el animal "animal" es de la especie "especie"
+        PRECONDICION: ninguna
+        PARAMETROS: *animal: Animal
+                    *especie: Especie
+        TIPO: Booleano
+    */
+    return (especie(animal) == especie)
+}
